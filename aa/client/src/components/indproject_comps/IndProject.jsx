@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import Request from "./Request"; 
 import TeamsTable from "../teams_comps/TeamsTable";
-import TasksTable from "../tasks _comps/TasksTable";
+import TasksTable from "../tasks_comps/TasksTable";
 
 import './IndProject.css';
 
@@ -93,6 +93,7 @@ export default function IndProject() {
               <TasksTable
                 isCreator={isCreator}
                 projectId={project.id}
+                type="project's" 
               />
             </>
             :

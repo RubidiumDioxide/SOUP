@@ -44,8 +44,13 @@ export default function Request({project, senderId}) {
     return (
         <div>
             <form onSubmit={handleRequestForm}>
-                <input type="text" name="role" placeholder="role" value={requestForm.description} onChange={handleRequestChange}/>
-                <button type="submit">Send request to project's creator</button>
+                <select class='rounded-select' name="role" onChange={handleRequestChange}>
+                    <option value='Lead'>Lead</option>
+                    <option value='Developer'>Developer</option>
+                    <option value='Designer'>Designer</option>
+                </select>
+
+                <button class='rounded-button' type="submit">Send request to participate</button>
             </form>
         </div>
     )

@@ -16,6 +16,7 @@ export default function Header(){
         <Link to="/allprojects" class="nav-link">All Projects</Link>
         <Link to={`/user`} class="nav-link">My Profile</Link>
         <Link to="/myprojects" class="nav-link">My Projects</Link>
+        <Link to="/mytasks" class="nav-link">My Tasks</Link>
         <Link to="/notifications" class="nav-link">Notifications</Link>
       </nav>
     </header>

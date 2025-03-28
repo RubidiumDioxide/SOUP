@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import Task from "./Task"; 
 import Add from "./Add"; 
 
-export default function TasksTable({isCreator, projectId}) {
+export default function TasksTable({isCreator, projectId, type}) {
   const [tasks, setTasks] = useState([]);
   const [refreshCond, setRefreshCond] = useState([false]);   
   const [isAdding, setIsAdding] = useState(false); 
+  const userId = sessionStorage.getItem('savedUserID');
 
-  var uri = `/api/Tasks/ByProject/ForDisplay/${projectId}`; 
+  var uri
+  if(type=="project's"){
+    uri = `/api/Tasks/ByProject/ForDisplay/${projectId}`
+  }
+  if(type=="my"){
+    uri = `/api/Tasks/ByAssignee/ForDisplay/${userId}`
+  }
 
   useEffect(()=>{
     fetch(uri)

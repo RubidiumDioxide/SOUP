@@ -207,6 +207,28 @@ namespace aa.Controllers
                          }).ToListAsync(); 
         }
 
+        // GET: api/Tasks/ByAssignee/ForDisplay/5
+        [HttpGet("ByAssignee/ForDisplay/{assigneeId}")]
+        public async Task<ActionResult<IEnumerable<TaskForDisplayDto>>> GetTasksByUserForDisplay(int assigneeId)
+        {
+            return await (from task in context.Tasks
+                          where task.AssigneeId == assigneeId
+                          join creator in context.Users on task.CreatorId equals creator.Id
+                          join assignee in context.Users on task.AssigneeId equals assignee.Id
+                          select new TaskForDisplayDto
+                          {
+                              Id = task.Id,
+                              ProjectId = task.ProjectId,
+                              CreatorId = creator.Id,
+                              CreatorName = creator.Name,
+                              AssigneeId = assignee.Id,
+                              AssigneeName = assignee.Name,
+                              Name = task.Name,
+                              Description = task.Description,
+                              IsComplete = task.IsComplete
+                          }).ToListAsync();
+        }
+
 
         // GET: api/Tasks/ForDisplay/5
         [HttpGet("ForDisplay/{id}")]

@@ -70,9 +70,10 @@ export default function IndTask() {
           }
 
           {isCreator? 
-            <button class='rounded-button'> 
+            /*<button class='rounded-button'> 
               Delete task               
-            </button>
+            </button>*/
+            <></>
             :
             null
           }

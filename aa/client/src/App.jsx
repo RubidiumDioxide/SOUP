@@ -5,6 +5,7 @@ import Header from './components/nav/Header';
 import AllProjectsPage from './components/pages/AllProjectsPage';
 import MyProjectsPage from './components/pages/MyProjectsPage';
 import WelcomePage from './components/pages/WelcomePage'; 
+import MyTasksPage from './components/pages/MyTasksPage'; 
 import NotificationsPage from './components/pages/NotificationsPage'; 
 import IndProject from './components/indproject_comps/IndProject';
 import IndUser from './components/induser_comps/IndUser';
@@ -88,6 +89,18 @@ function App() {
               </RegisteredRoute>
             }          
           />  
+          
+          <Route 
+            path="/mytasks" 
+            element={
+              <RegisteredRoute usertype={appState.usertype}>
+                <div>
+                  <Header />
+                  <MyTasksPage />
+                </div>
+              </RegisteredRoute>
+            }          
+          />
 
           <Route 
             path="/notifications" 

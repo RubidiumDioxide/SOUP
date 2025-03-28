@@ -514,6 +514,32 @@
   },
   {
     "ContainingType": "aa.Controllers.TasksController",
+    "Method": "GetTasksByUserForDisplay",
+    "RelativePath": "api/Tasks/ByAssignee/ForDisplay/{assigneeId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "assigneeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[aa.Views.TaskForDisplayDto, aa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "aa.Controllers.TasksController",
     "Method": "GetTasksByProject",
     "RelativePath": "api/Tasks/ByProject/{projectId}",
     "HttpMethod": "GET",
