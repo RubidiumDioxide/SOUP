@@ -8,6 +8,7 @@ import WelcomePage from './components/pages/WelcomePage';
 import NotificationsPage from './components/pages/NotificationsPage'; 
 import IndProject from './components/indproject_comps/IndProject';
 import IndUser from './components/induser_comps/IndUser';
+import IndTask from './components/indtask_comps/IndTask';  
 
 
 function App() {
@@ -120,6 +121,18 @@ function App() {
                 <div>
                   <Header />
                   <IndProject />
+                </div>
+              </RegisteredRoute>
+            }          
+          /> 
+
+          <Route 
+            path="/task/:id" 
+            element={
+              <RegisteredRoute usertype={appState.usertype}>
+                <div>
+                  <Header />
+                  <IndTask />
                 </div>
               </RegisteredRoute>
             }          
