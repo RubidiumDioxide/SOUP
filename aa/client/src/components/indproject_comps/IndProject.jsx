@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"; 
-import {Link} from "react-router-dom"; 
+import {Link} from "react-router-dom";
+
 import Request from "./Request"; 
 import TeamsTable from "../teams_comps/TeamsTable";
+import TasksTable from "../tasks _comps/TasksTable";
 
 import './IndProject.css';
 
@@ -13,6 +15,7 @@ export default function IndProject() {
   const [refreshCond, setRefreshCond] = useState([true]);
   const [isEditing, setIsEditing] = useState(false); 
   const [isCreator, setIsCreator] = useState(null);
+  const [isInTeam, setIsInTeam] = useState(false); 
   const userID = Number(sessionStorage.getItem("savedUserID"));
 
   useEffect(()=>{
@@ -25,6 +28,16 @@ export default function IndProject() {
     fetch(uri)
       .then(response => response.json())
       .then(p => setIsCreator(p.creatorId == sessionStorage.getItem("savedUserID")))
+
+    fetch(`/api/users/isinteam/${Number(sessionStorage.getItem("savedUserID"))}/${id}`)
+      .then(response => { 
+        if(response.ok){
+          setIsInTeam(true); 
+        }
+        else{
+          setIsInTeam(false); 
+        }
+      })
   }, [])
 
   function onAction(){
@@ -68,11 +81,24 @@ export default function IndProject() {
           :
           null}
 
-          <h4>Project's team</h4>
-          <TeamsTable
-            isCreator={isCreator}
-            projectId={project.id}
-          />
+          {(isCreator || isInTeam)? 
+            <>
+              <h4>Project's team</h4>
+              <TeamsTable
+                isCreator={isCreator}
+                projectId={project.id}
+              /> 
+
+              <h4>Tasks</h4>
+              <TasksTable
+                isCreator={isCreator}
+                projectId={project.id}
+              />
+            </>
+            :
+            null        
+          }
+
         </div>
       :  
         //if not

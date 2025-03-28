@@ -10,12 +10,15 @@ export default function Welcome({changeAppState}) {
     return (
         <div>
           <p>Hiiiiiiiii</p>  
-          <button class='rounded-button' onClick={() => {setWelcomeState("login")}}>
-            Log In
-          </button>
-          <button class='rounded-button' onClick={() => {setWelcomeState("signup")}}>
-            Sign Up            
-          </button>
+          <p>
+            <button class='rounded-button' onClick={() => {setWelcomeState("login")}}>
+              Log In
+            </button>
+            <button class='rounded-button' onClick={() => {setWelcomeState("signup")}}>
+              Sign Up            
+            </button>
+          </p>
+          
           {(welcomeState === "signup")? 
             <SignUp changeAppState={changeAppState}/>          
             :

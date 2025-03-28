@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 // deconstructed props
 export default function Notification({notification, notification:{id, projectId, senderId, receiverId, role, type}, onAction}) {
   const [project, setProject] = useState({}); 
+  const [sender, setSender] = useState({});  
   const [refreshCond, setRefreshCond] = useState([true]);
 
   //load project 
@@ -11,7 +12,12 @@ export default function Notification({notification, notification:{id, projectId,
     fetch(`/api/Projects/${projectId}`, {
       method: "GET"})
       .then(response => response.json())
-      .then(p => setProject(p)); 
+      .then(p => setProject(p));  
+
+    fetch(`/api/Users/${senderId}`, {
+      method: "GET"})
+      .then(response => response.json())
+      .then(u => setSender(u)); 
   }, []); 
 
   function Accept(){
@@ -72,11 +78,6 @@ export default function Notification({notification, notification:{id, projectId,
       .then(onAction); 
   } 
 
-
-
-  // replace senderId with getting user earlier and showing senderName
-
-
   return (
     {project}? 
     // if project loaded
@@ -92,7 +93,7 @@ export default function Notification({notification, notification:{id, projectId,
         null}
         {type=="request"?
         <>
-          <Link to={`/user/${senderId}`}> {senderId} </Link>  
+          <Link to={`/user/${senderId}`}> {sender.name} </Link>  
           sent a request to participate in your project  
           <Link to={`/project/${projectId}`}> {project.name} </Link>
           as a {role}. 
@@ -101,11 +102,12 @@ export default function Notification({notification, notification:{id, projectId,
         null}
 
       </p>
+
       <p>
-        <button onClick={Accept}>
+        <button class='rounded-button' onClick={Accept}>
           Accept
         </button>
-        <button onClick={Decline}>
+        <button class='rounded-button' onClick={Decline}>
           Decline
         </button>
       </p>

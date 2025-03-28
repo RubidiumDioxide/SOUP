@@ -31,6 +31,7 @@ namespace aa.Controllers
             return await context.Users.Select(u => new UserDto(u)).ToListAsync();
         }
 
+
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDto>> GetUser(int id)
@@ -58,6 +59,23 @@ namespace aa.Controllers
 
             return new UserDto(user);
         }
+
+        // GET: api/Users/IsInTeam/3/5
+        [HttpGet("IsInTeam/{userId}/{projectId}")]
+        public async Task<IActionResult> IsUserInTeam(int userId, int projectId)
+        {
+            var user = await context.Teams
+                .Where(t => ((t.UserId == userId) && (t.ProjectId == projectId)))
+                .ToListAsync(); 
+
+            if (user.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(); 
+        }
+
 
         [HttpPut("{id}")]
         public async Task<ActionResult<UserDto>> PutUser(int id, UserDto userdto)

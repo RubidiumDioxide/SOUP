@@ -12,10 +12,11 @@ export default function Header(){
   return (
     <header>
       <nav>
-          <Link to="/allprojects" class="nav-link">All Projects</Link>
-          <Link to={`/user`} class="nav-link">My Profile</Link>
-          <Link to="/myprojects" class="nav-link">My Projects</Link>
-          <Link to="/notifications" class="nav-link">Notifications</Link>
+        <Link to="/welcome" class="nav-link">SignUp & LogIn</Link>
+        <Link to="/allprojects" class="nav-link">All Projects</Link>
+        <Link to={`/user`} class="nav-link">My Profile</Link>
+        <Link to="/myprojects" class="nav-link">My Projects</Link>
+        <Link to="/notifications" class="nav-link">Notifications</Link>
       </nav>
     </header>
   )

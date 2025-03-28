@@ -30,6 +30,17 @@ namespace aa.Controllers
                 .ToListAsync();
         }
 
+        // GET: api/Tasks/ByProject/5
+        [HttpGet("ByProject/{projectId}")]
+        public async Task<ActionResult<IEnumerable<TaskDto>>> GetTasksByProject(int projectId)
+        {
+            return await context.Tasks
+                .Where(t => t.ProjectId == projectId)
+                .Select(t => new TaskDto(t))
+                .ToListAsync();
+        }
+
+
         // GET: api/Tasks/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TaskDto>> GetTask(int id)
@@ -78,6 +89,7 @@ namespace aa.Controllers
             return NoContent();
         }
 
+
         // POST: api/Tasks
         [HttpPost]
         public async Task<IActionResult> PostTask(TaskDto taskdto)
@@ -89,6 +101,33 @@ namespace aa.Controllers
                 Name = taskdto.Name,
                 Description = taskdto.Description,
                 IsComplete = taskdto.IsComplete
+            };
+
+            context.Tasks.Add(task);
+
+            await context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // POST: api/Tasks/ByAssignee/Lea 
+        [HttpPost("ByAssignee/{userName}")]
+        public async Task<IActionResult> PostTaskByAssignee(TaskDto taskdto, string userName)
+        {
+            var assignee = await context.Users.FirstOrDefaultAsync(u => u.Name == userName);
+
+            if (assignee == null)
+            {
+                return NotFound(); 
+            }
+
+            var task = new aa.Models.Task
+            {
+                ProjectId = taskdto.ProjectId,
+                AssigneeId = assignee.Id,
+                Name = taskdto.Name,
+                Description = taskdto.Description,
+                IsComplete = false 
             };
 
             context.Tasks.Add(task);
