@@ -14,6 +14,8 @@ public partial class Project
 
     public int Creator { get; set; }
 
+    public virtual ICollection<Action> Actions { get; set; } = new List<Action>();
+
     public virtual User CreatorNavigation { get; set; } = null!;
 
     public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();

@@ -16,6 +16,8 @@ public partial class SoupDbContext : DbContext
     {
     }
 
+    public virtual DbSet<Action> Actions { get; set; }
+
     public virtual DbSet<Notification> Notifications { get; set; }
 
     public virtual DbSet<Project> Projects { get; set; }
@@ -32,6 +34,34 @@ public partial class SoupDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Action>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__ACTION__3214EC2784BB3D71");
+
+            entity.ToTable("ACTION");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.ActorId).HasColumnName("ActorID");
+            entity.Property(e => e.Date).HasColumnType("datetime");
+            entity.Property(e => e.Description).HasMaxLength(500);
+            entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
+            entity.Property(e => e.TaskId).HasColumnName("TaskID");
+
+            entity.HasOne(d => d.Actor).WithMany(p => p.Actions)
+                .HasForeignKey(d => d.ActorId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ACTION__ActorID__5B438874");
+
+            entity.HasOne(d => d.Project).WithMany(p => p.Actions)
+                .HasForeignKey(d => d.ProjectId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ACTION__ProjectI__5A4F643B");
+
+            entity.HasOne(d => d.Task).WithMany(p => p.Actions)
+                .HasForeignKey(d => d.TaskId)
+                .HasConstraintName("FK__ACTION__TaskID__5C37ACAD");
+        });
+
         modelBuilder.Entity<Notification>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__NOTIFICA__3214EC275F10BA43");

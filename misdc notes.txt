@@ -24,7 +24,12 @@ add an ability to send a request to be added to project's team 				DONE
 
 
 add adding tasks to project 				DONE 
-add taskdto & fordisplay
-add tasks tab that displays user's assigned tasks 
-add indtask page w/ editing, completing(for assignee) & deleting (for project manager)  	 	
+add taskdto & fordisplay				DONE
+add tasks tab that displays user's assigned tasks 	DONE
+add indtask page   	 				DONE 
+
+add actions sql table & controller	
+add actions component and section to indproject page 
+
+add finishing a task(as an assignee), connected to an action 				
 

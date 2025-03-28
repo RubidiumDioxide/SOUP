@@ -12,6 +12,8 @@ public partial class User
 
     public string Password { get; set; } = null!;
 
+    public virtual ICollection<Action> Actions { get; set; } = new List<Action>();
+
     public virtual ICollection<Notification> NotificationReceivers { get; set; } = new List<Notification>();
 
     public virtual ICollection<Notification> NotificationSenders { get; set; } = new List<Notification>();
