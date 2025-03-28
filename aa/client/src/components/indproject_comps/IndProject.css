@@ -1,0 +1,40 @@
+.page{ 
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #24292e;
+  color: #a1a1a1; 
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;      /* Center vertically */
+  flex-direction: column; 
+  height: 100vh;   
+}
+
+p {
+  color: #a1a1a1;
+  text-decoration: none;
+} 
+
+.rounded-button {
+  background-color: rgb(255, 187, 0); 
+  color: #333; 
+  border: none;
+  border-radius: 6px; 
+  padding: 8px 16px;
+  margin: 10px 2px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, transform 0.1s; 
+}
+
+.rounded-button:hover {
+  background-color: rgb(255, 203, 61); 
+}
+
+.rounded-button:active {
+  transform: scale(0.95); 
+}
+
+

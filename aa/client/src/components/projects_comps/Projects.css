@@ -1,0 +1,41 @@
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse; 
+  margin-bottom: 20px; /* Add bottom margin */
+  border-radius: 6px; /* Slightly rounded corners */
+  overflow: hidden; /* Crop anything that exceeds the border-radius */
+}
+
+th, td {
+  padding: 8px 12px; /* Cell padding */
+  text-align: left; /* Align text to the left */
+  color: #c7c8d0;
+}
+
+th {
+  background-color: #ffd04e; 
+  color: #16181a; 
+  font-weight: 600; /* Medium weight for headers */
+  text-transform: capitalize; /* Capitalize the first letter */
+}
+
+/* Style for even rows */
+tbody tr:nth-child(even) {
+  background-color: #24292e;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #1a1e22; /* Light gray background for even rows */
+}
+
+
+/* Hover effect for rows */
+tbody tr:hover {
+  background-color: #000000; 
+}
+
+/* Style for last row */
+tbody tr:last-child td {
+  border-bottom: none; 
+}
