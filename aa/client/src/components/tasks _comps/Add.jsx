@@ -1,5 +1,5 @@
 import { Descriptions } from 'antd';
-import {React, useState} from 'react'
+import {React, useEffect, useState} from 'react'
 
 export default function Add({projectId, onAction}) {
     const [teammates, setTeammates] = useState([]); 
@@ -25,6 +25,15 @@ export default function Add({projectId, onAction}) {
     function handleAddForm(e) {
         e.preventDefault();
     
+        console.log({
+            id : 0, 
+            projectId : projectId, 
+            assigneeId : 0, // no need to provide, controller method gets user on it's own 
+            name : addForm.name,
+            description : addForm.description, 
+            isComplete : false
+        }, addForm);
+
         fetch(`/api/Tasks/${addForm.assigneeName}`, {
             method : "POST", 
             headers : {
@@ -49,13 +58,13 @@ export default function Add({projectId, onAction}) {
 
                 <input class='rounded-input' type="text" name="description" placeholder="task description" value={addForm.description} onChange={handleFormChange}/>
 
-                <select name="assigneeId">
+                <select class='rounded-select' name="assigneeName" onChange={handleFormChange}>
                     {teammates.map(teammate => 
-                        <option name="assigneeName" value={teammate.userName}>{teammate.userName}</option>
+                        <option key={teammate.id} value={teammate.userName.toString()}>{teammate.userName}</option>
                     )}    
                 </select>
                 
-                <button type="submit">Send invite to user</button>
+                <button class='rounded-button' type="submit">Add Task</button>
             </form>
         </div>
     )

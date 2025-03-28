@@ -46,7 +46,7 @@ export default function ProjetcsTable({type}) {
       {(type=="my")? 
       <>
         <button class='rounded-button' onClick={changeAddState}>
-          Add
+          New Project
         </button>
 
         {isAdding?

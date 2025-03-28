@@ -875,7 +875,7 @@
         }
       }
     },
-    "/api/Tasks/ByAssignee/{userName}": {
+    "/api/Tasks/{userName}": {
       "post": {
         "tags": [
           "Tasks"

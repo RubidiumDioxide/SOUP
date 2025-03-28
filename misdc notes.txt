@@ -3,12 +3,10 @@
 Scaffold-DbContext "Server=WIN-4E7JKGBR3SV\SQLEXPRESS;Database=soup_DB;TrustServerCertificate=True;Encrypt=False;user id=sa;password=1234;" Microsoft.EntityFrameworkCore.SqlServer -f
 
 to-do: 
-<<<<<<< HEAD
-Add login 
-Add a starting page with login/signup options
-My profile with redact option 
-My projects (table only for now)
-=======
+Add login 						DONE
+Add a starting page with login/signup options		DONE
+My profile with redact option 				DONE
+My projects (table only for now)			DONE
 Add login 						DONE 
 Add a starting page with login/signup options		DONE
 My profile with redact option 				DONE			
@@ -16,9 +14,13 @@ My projects (table only for now)			DONE
 add adding people to project team & assigning roles 	DONE
 	add notification system (separate tab, two actions - join or decline)  		DONE
 add redacting people's roles or evicting them		DONE
+
 add team page (a list of all people with links) 	WHY?
-add adding tasks to project (tasks are displayed on the project's main page, personal ones are displayed on Tasks tab, add the ability to mark task as complete) 
+
+
 rework projects components 				DONE 
 make it so that (projectid, userid, role) combination is unique (in db scheme) 		DONE 
 add an ability to send a request to be added to project's team 				DONE
->>>>>>> d12b97f1c2dca8867ec977a1ae22f89308b7978a
+
+
+add adding tasks to project (tasks are displayed on the project's main page, personal ones are displayed on Tasks tab, add the ability to mark task as complete) 

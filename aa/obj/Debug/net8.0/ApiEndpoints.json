@@ -474,7 +474,7 @@
   {
     "ContainingType": "aa.Controllers.TasksController",
     "Method": "PostTaskByAssignee",
-    "RelativePath": "api/Tasks/ByAssignee/{userName}",
+    "RelativePath": "api/Tasks/{userName}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

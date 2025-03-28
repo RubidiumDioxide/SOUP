@@ -110,8 +110,8 @@ namespace aa.Controllers
             return NoContent();
         }
 
-        // POST: api/Tasks/ByAssignee/Lea 
-        [HttpPost("ByAssignee/{userName}")]
+        // POST: api/Tasks/Lea 
+        [HttpPost("{userName}")]
         public async Task<IActionResult> PostTaskByAssignee(TaskDto taskdto, string userName)
         {
             var assignee = await context.Users.FirstOrDefaultAsync(u => u.Name == userName);

@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\models\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:models\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\views\\taskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:views\\taskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\models\\soupdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:models\\soupdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 119,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,41 +42,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Controllers\\UsersController.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAkwDkAAAANAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "SoupDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\SoupDbContext.cs",
+              "RelativeDocumentMoniker": "Models\\SoupDbContext.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\SoupDbContext.cs",
+              "RelativeToolTip": "Models\\SoupDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T05:31:00.538Z",
+              "WhenOpened": "2025-03-28T07:20:50.551Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TasksController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\TasksController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TasksController.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\TasksController.cs",
-              "RelativeToolTip": "Controllers\\TasksController.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAuwIYAAAAjAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "Models\\Notification.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Notification.cs",
+              "RelativeToolTip": "Models\\Notification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T10:11:29.404Z",
+              "WhenOpened": "2025-03-28T07:17:34.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Project.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Project.cs",
+              "RelativeDocumentMoniker": "Models\\Project.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Project.cs",
+              "RelativeToolTip": "Models\\Project.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T07:17:32.563Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "TaskDto.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\TaskDto.cs",
-              "RelativeDocumentMoniker": "Views\\TaskDto.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\TaskDto.cs",
-              "RelativeToolTip": "Views\\TaskDto.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwCQAAAAAAAAAAAAAAA==",
+              "Title": "Task.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Task.cs",
+              "RelativeDocumentMoniker": "Models\\Task.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Task.cs",
+              "RelativeToolTip": "Models\\Task.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T10:06:21.287Z",
+              "WhenOpened": "2025-03-28T07:17:25.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Team.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Team.cs",
+              "RelativeDocumentMoniker": "Models\\Team.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Team.cs",
+              "RelativeToolTip": "Models\\Team.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T07:17:24.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T07:17:23.194Z",
               "EditorCaption": ""
             }
           ]
