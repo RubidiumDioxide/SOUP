@@ -23,4 +23,8 @@ make it so that (projectid, userid, role) combination is unique (in db scheme) 	
 add an ability to send a request to be added to project's team 				DONE
 
 
-add adding tasks to project (tasks are displayed on the project's main page, personal ones are displayed on Tasks tab, add the ability to mark task as complete) 
+add adding tasks to project 				DONE 
+add taskdto & fordisplay
+add tasks tab that displays user's assigned tasks 
+add indtask page w/ editing, completing(for assignee) & deleting (for project manager)  	 	
+

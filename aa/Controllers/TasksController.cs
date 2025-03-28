@@ -72,6 +72,7 @@ namespace aa.Controllers
             }
 
             task.ProjectId = taskdto.ProjectId; 
+            task.CreatorId = taskdto.CreatorId; 
             task.AssigneeId = taskdto.AssigneeId; 
             task.Name = taskdto.Name; 
             task.Description = taskdto.Description; 
@@ -97,6 +98,7 @@ namespace aa.Controllers
             var task = new aa.Models.Task
             {
                 ProjectId = taskdto.ProjectId,
+                CreatorId = taskdto.CreatorId,
                 AssigneeId = taskdto.AssigneeId,
                 Name = taskdto.Name,
                 Description = taskdto.Description,
@@ -124,6 +126,7 @@ namespace aa.Controllers
             var task = new aa.Models.Task
             {
                 ProjectId = taskdto.ProjectId,
+                CreatorId = taskdto.CreatorId,
                 AssigneeId = assignee.Id,
                 Name = taskdto.Name,
                 Description = taskdto.Description,
@@ -157,6 +160,85 @@ namespace aa.Controllers
         private bool TaskExists(int id)
         {
             return context.Tasks.Any(e => e.Id == id);
+        }
+
+
+        // FOR DISPLAY
+
+        // GET: api/Tasks
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<TaskForDisplayDto>>> GetTasksForDisplay()
+        {
+            return await (from task in context.Tasks
+                          join creator in context.Users on task.CreatorId equals creator.Id
+                          join assignee in context.Users on task.AssigneeId equals assignee.Id
+                          select new TaskForDisplayDto
+                          {
+                              Id = task.Id,
+                              ProjectId = task.ProjectId,
+                              CreatorId = creator.Id,
+                              CreatorName = creator.Name,
+                              AssigneeId = assignee.Id,
+                              AssigneeName = assignee.Name,
+                              Name = task.Name,
+                              Description = task.Description,
+                              IsComplete = task.IsComplete
+                          }).ToListAsync();
+        }
+
+        // GET: api/Tasks/ByProject/ForDisplay/5
+        [HttpGet("ByProject/ForDisplay/{projectId}")]
+        public async Task<ActionResult<IEnumerable<TaskForDisplayDto>>> GetTasksByProjectForDisplay(int projectId)
+        {
+            return await (from task in context.Tasks
+                         where task.ProjectId == projectId
+                         join creator in context.Users on task.CreatorId equals creator.Id
+                         join assignee in context.Users on task.AssigneeId equals assignee.Id
+                         select new TaskForDisplayDto {
+                             Id = task.Id,
+                             ProjectId = task.ProjectId,
+                             CreatorId = creator.Id,
+                             CreatorName = creator.Name,
+                             AssigneeId = assignee.Id,
+                             AssigneeName = assignee.Name,
+                             Name = task.Name,
+                             Description = task.Description,
+                             IsComplete = task.IsComplete
+                         }).ToListAsync(); 
+        }
+
+
+        // GET: api/Tasks/ForDisplay/5
+        [HttpGet("ForDisplay/{id}")]
+        public async Task<ActionResult<TaskForDisplayDto>> GetTaskForDisplay(int id)
+        {
+            var task = await context.Tasks.FindAsync(id); 
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            var creator = await context.Users.FindAsync(task.CreatorId);
+            var assignee = await context.Users.FindAsync(task.AssigneeId);
+
+            if (creator == null || assignee == null)
+            {
+                return NotFound();
+            }
+
+            return new TaskForDisplayDto
+            {
+                Id = task.Id,
+                ProjectId = task.ProjectId,
+                CreatorId = creator.Id,
+                CreatorName = creator.Name,
+                AssigneeId = assignee.Id,
+                AssigneeName = assignee.Name,
+                Name = task.Name,
+                Description = task.Description,
+                IsComplete = task.IsComplete
+            }; 
         }
     }
 }

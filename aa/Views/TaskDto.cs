@@ -6,6 +6,7 @@ namespace aa.Views
     {
         public int Id { get; set; }
         public int ProjectId { get; set; }
+        public int CreatorId { get; set; }
         public int AssigneeId { get; set; }
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
@@ -15,16 +16,18 @@ namespace aa.Views
         {
             Id = t.Id; 
             ProjectId = t.ProjectId; 
+            CreatorId = t.CreatorId; 
             AssigneeId = t.AssigneeId; 
             Name = t.Name; 
             Description = t.Description; 
             IsComplete = t.IsComplete;
         }
 
-        public TaskDto(int id, int projectId, int assigneeId, string name, string description, bool isComplete)
+        public TaskDto(int id, int projectId, int creatorId, int assigneeId, string name, string description, bool isComplete)
         {
             Id = id; 
             ProjectId = projectId; 
+            CreatorId = creatorId; 
             AssigneeId = assigneeId; 
             Name = name; 
             Description = description; 

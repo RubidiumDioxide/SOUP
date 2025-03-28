@@ -7,7 +7,7 @@ export default function TasksTable({isCreator, projectId}) {
   const [refreshCond, setRefreshCond] = useState([false]);   
   const [isAdding, setIsAdding] = useState(false); 
 
-  var uri = `/api/Tasks/ByProject/${projectId}`; 
+  var uri = `/api/Tasks/ByProject/ForDisplay/${projectId}`; 
 
   useEffect(()=>{
     fetch(uri)

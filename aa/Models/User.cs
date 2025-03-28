@@ -18,7 +18,9 @@ public partial class User
 
     public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
 
-    public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
+    public virtual ICollection<Task> TaskAssignees { get; set; } = new List<Task>();
+
+    public virtual ICollection<Task> TaskCreators { get; set; } = new List<Task>();
 
     public virtual ICollection<Team> Teams { get; set; } = new List<Team>();
 }
