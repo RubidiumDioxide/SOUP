@@ -58,6 +58,10 @@ return (
       : null}
     </div> : null}
 
+
+    {(teams.length == 0)? 
+    <p>No members yet</p>  
+    :
     <table>
       <thead>
         <tr>
@@ -76,6 +80,8 @@ return (
           />)}
       </tbody>
     </table>
+    }
+   
   </div>
   );
 } 

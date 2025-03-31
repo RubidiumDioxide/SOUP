@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import Request from "./Request"; 
 import TeamsTable from "../teams_comps/TeamsTable";
 import TasksTable from "../tasks_comps/TasksTable";
+import ActionsTable from "../actions_comps/ActionsTable";
 
 import './IndProject.css';
 
@@ -14,6 +15,7 @@ export default function IndProject() {
   const [project, setProject] = useState(null); // gets ProjectForDisplayDto!   
   const [refreshCond, setRefreshCond] = useState([true]);
   const [isEditing, setIsEditing] = useState(false); 
+  const [isRequesting, setIsRequesting] = useState(false); 
   const [isCreator, setIsCreator] = useState(null);
   const [isInTeam, setIsInTeam] = useState(false); 
   const userID = Number(sessionStorage.getItem("savedUserID"));
@@ -48,6 +50,10 @@ export default function IndProject() {
     setIsEditing(!isEditing); 
   }
 
+  function changeRequestState(){
+    setIsRequesting(!isRequesting); 
+  }
+
   return (
       (project)?
         //if project is loaded 
@@ -74,10 +80,20 @@ export default function IndProject() {
           }
         
           {(!isCreator)?
-          <Request
-            project={project}
-            senderId={userID}  
-          />
+          <>
+            <button class='rounded-button' onClick={changeRequestState}>
+              Request
+            </button>
+
+            {isRequesting?
+            <Request
+              project={project}
+              senderId={userID}  
+            />
+            :
+            null
+            } 
+          </>
           :
           null}
 
@@ -93,7 +109,17 @@ export default function IndProject() {
               <TasksTable
                 isCreator={isCreator}
                 projectId={project.id}
-                type="project's" 
+                type="byproject" 
+              />
+
+              <h4>Actions</h4>
+              <ActionsTable
+                projectId={project.id}
+                taskId={null}
+                actorId={null}
+                isTaskComplete={null}
+                type="byproject"
+                onAction={onAction}
               />
             </>
             :

@@ -1,23 +1,19 @@
-import { Descriptions } from 'antd';
 import {React, useEffect, useState} from 'react'
 
-export default function Add({projectId, onAction}) {
-    const [teammates, setTeammates] = useState([]); 
-    const [user, setUser] = useState({});
+export default function AddFinish({projectId, taskId, onAction, type}) { 
+    const userId = Number(sessionStorage.getItem('savedUserID'));   
     const [addForm, setAddForm] = useState({
-        name : "",
         description : "", 
-        assigneeName : "" 
     }); 
 
     useEffect(() => {
-        fetch(`/api/Users/${sessionStorage.getItem('savedUserID')}`)
+        /*fetch(`/api/Users/${sessionStorage.getItem('savedUserID')}`)
             .then(response => response.json())
             .then(data => setUser(data))
 
         fetch(`/api/Teams/ForDisplay/Project/${projectId}`)
             .then(response => response.json())
-            .then(data => setTeammates(data)); 
+            .then(data => setTeammates(data));*/ 
     }, [])
 
     function handleFormChange(e){
@@ -30,7 +26,7 @@ export default function Add({projectId, onAction}) {
     function handleAddForm(e) {
         e.preventDefault();
 
-        fetch(`/api/Tasks/${addForm.assigneeName}`, {
+       fetch(`/api/Actions`, {
             method : "POST", 
             headers : {
                 "Content-Type" : "application/json"
@@ -38,30 +34,31 @@ export default function Add({projectId, onAction}) {
             body : JSON.stringify({
                 id : 0, 
                 projectId : projectId, 
-                creatorId : user.id, 
-                assigneeId : 0, // no need to provide, controller method gets user on it's own 
-                name : addForm.name,
+                actorId : userId, 
+                taskId : taskId, 
                 description : addForm.description, 
-                isComplete : false
+                date : Date.now
             })
         })
             .then(onAction)
+
+        if(type == "finish"){
+            fetch(`/api/Tasks/Complete/${taskId}`, {
+                method : "PUT", 
+                headers : {
+                    "Content-Type" : "application/json"
+                } 
+            })
+                .then(onAction)
+        }
     }
 
     return (
         <div>
             <form onSubmit={handleAddForm}>
-                <input class='rounded-input' type="text" name="name" placeholder="task name" value={addForm.name} onChange={handleFormChange}/>
-
                 <input class='rounded-input' type="text" name="description" placeholder="task description" value={addForm.description} onChange={handleFormChange}/>
-
-                <select class='rounded-select' name="assigneeName" onChange={handleFormChange}>
-                    {teammates.map(teammate => 
-                        <option key={teammate.id} value={teammate.userName.toString()}>{teammate.userName}</option>
-                    )}    
-                </select>
                 
-                <button class='rounded-button' type="submit">Add Task</button>
+                <button class='rounded-button' type="submit">{(type == 'add')?'Add Action':'Add Finishing Action'}</button>
             </form>
         </div>
     )

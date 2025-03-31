@@ -5,7 +5,8 @@ namespace aa.Views
     public class TaskForDisplayDto
     {
         public int Id { get; set; }
-        public int ProjectId { get; set; }
+        public int ProjectId { get; set; } 
+        public string ProjectName { get; set; } 
         public int CreatorId { get; set; }
         public string CreatorName { get; set; }
         public int AssigneeId { get; set; }
@@ -14,10 +15,11 @@ namespace aa.Views
         public string? Description { get; set; }
         public bool IsComplete { get; set; }
 
-        public TaskForDisplayDto(aa.Models.Task t, string creatorName, string assigneeName) 
+        public TaskForDisplayDto(aa.Models.Task t, string creatorName, string assigneeName, string projectName) 
         {
             Id = t.Id;
             ProjectId = t.ProjectId;
+            ProjectName = projectName; 
             CreatorId = t.CreatorId;
             CreatorName = creatorName;
             AssigneeId = t.AssigneeId;
@@ -27,10 +29,11 @@ namespace aa.Views
             IsComplete = t.IsComplete;
         }
 
-        public TaskForDisplayDto(int id, int projectId, int creatorId, string creatorName, int assigneeId, string assigneeName, string name, string description, bool isComplete)
+        public TaskForDisplayDto(int id, int projectId, string projectName, int creatorId, string creatorName, int assigneeId, string assigneeName, string name, string description, bool isComplete)
         {
             Id = id;
-            ProjectId = projectId;
+            ProjectId = projectId; 
+            ProjectName = projectName; 
             CreatorId = creatorId;
             CreatorName = creatorName; 
             AssigneeId = assigneeId; 

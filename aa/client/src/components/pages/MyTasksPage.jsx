@@ -7,7 +7,7 @@ export default function MyTasksPage(){
     return(
         <div>
             <TasksTable
-              type="my"
+              type="byassignee"
             />
         </div>
     )

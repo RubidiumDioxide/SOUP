@@ -51,6 +51,27 @@ namespace aa.Controllers
                 .ToListAsync();
         }
 
+        // GET: api/Actions/ByTask/5
+        [HttpGet("ByTask/{taskId}")]
+        public async Task<ActionResult<IEnumerable<ActionDto>>> GetActionsByTask(int taskId)
+        {
+            return await context.Actions
+                .Where(a => a.TaskId == taskId)
+                .Select(a => new ActionDto(a))
+                .ToListAsync();
+        }
+
+        // GET: api/Actions/ByActor/ByTask/5/3
+        [HttpGet("ByActor/ByTask/{actorId}/{taskId}")]
+        public async Task<ActionResult<IEnumerable<ActionDto>>> GetActionsByActorByTask(int actorId, int taskId)
+        {
+            return await context.Actions
+                .Where(a => a.ActorId == actorId)
+                .Where(a => a.TaskId == taskId)
+                .Select(a => new ActionDto(a))
+                .ToListAsync();
+        }
+
 
         // GET: api/Actions/5
         [HttpGet("{id}")]

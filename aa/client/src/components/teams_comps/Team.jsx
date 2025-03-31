@@ -1,5 +1,5 @@
 import React from 'react'; 
-import Delete from '../teams_comps/Delete'; 
+import Delete from './Delete'; 
 import {Link} from 'react-router-dom'; 
 
 // deconstructed props

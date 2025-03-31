@@ -1,8 +1,7 @@
 import React from 'react'; 
 import {Link} from 'react-router-dom'; 
 
-// deconstructed props
-export default function Task({task, task:{id, projectId, creatorId, creatorName, assigneeId, assigneeName, name, description, isComplete}, onAction, isCreator}) {
+export default function Task({task, task:{id, projectId, creatorId, creatorName, assigneeId, assigneeName, name, description, isComplete}}) {
   return (
     <tr key={id}>
       <td>

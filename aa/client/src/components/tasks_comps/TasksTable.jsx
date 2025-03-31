@@ -9,10 +9,10 @@ export default function TasksTable({isCreator, projectId, type}) {
   const userId = sessionStorage.getItem('savedUserID');
 
   var uri
-  if(type=="project's"){
+  if(type=="byproject"){
     uri = `/api/Tasks/ByProject/ForDisplay/${projectId}`
   }
-  if(type=="my"){
+  if(type=="byassignee"){
     uri = `/api/Tasks/ByAssignee/ForDisplay/${userId}`
   }
 
@@ -47,6 +47,9 @@ return (
 
     </div> : null}
 
+    {(tasks.length == 0)?
+    <p>No tasks yet</p>
+    : 
     <table>
       <thead>
         <tr>
@@ -66,6 +69,7 @@ return (
           />)}
       </tbody>
     </table>
+    }
   </div>
   );
 } 

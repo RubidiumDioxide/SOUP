@@ -55,6 +55,7 @@ namespace aa.Controllers
             return new TaskDto(task); 
         }
 
+       
         // PUT: api/Tasks/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTask(int id, TaskDto taskdto)
@@ -77,6 +78,31 @@ namespace aa.Controllers
             task.Name = taskdto.Name; 
             task.Description = taskdto.Description; 
             task.IsComplete = taskdto.IsComplete;
+
+            try
+            {
+                await context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException) when (!TaskExists(id))
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+        // PUT: api/Tasks/Complete/5
+        [HttpPut("Complete/{id}")]
+        public async Task<IActionResult> PutTaskComplete(int id)
+        {
+            var task = await context.Tasks.FindAsync(id);
+
+            if (task == null)
+            {
+                return BadRequest();
+            }
+
+            task.IsComplete = true; 
 
             try
             {
@@ -170,12 +196,14 @@ namespace aa.Controllers
         public async Task<ActionResult<IEnumerable<TaskForDisplayDto>>> GetTasksForDisplay()
         {
             return await (from task in context.Tasks
+                          join project in context.Projects on task.ProjectId equals project.Id
                           join creator in context.Users on task.CreatorId equals creator.Id
                           join assignee in context.Users on task.AssigneeId equals assignee.Id
                           select new TaskForDisplayDto
                           {
                               Id = task.Id,
-                              ProjectId = task.ProjectId,
+                              ProjectId = task.ProjectId, 
+                              ProjectName = project.Name, 
                               CreatorId = creator.Id,
                               CreatorName = creator.Name,
                               AssigneeId = assignee.Id,
@@ -192,11 +220,13 @@ namespace aa.Controllers
         {
             return await (from task in context.Tasks
                          where task.ProjectId == projectId
+                         join project in context.Projects on task.ProjectId equals project.Id
                          join creator in context.Users on task.CreatorId equals creator.Id
                          join assignee in context.Users on task.AssigneeId equals assignee.Id
                          select new TaskForDisplayDto {
                              Id = task.Id,
-                             ProjectId = task.ProjectId,
+                             ProjectId = task.ProjectId, 
+                             ProjectName = project.Name, 
                              CreatorId = creator.Id,
                              CreatorName = creator.Name,
                              AssigneeId = assignee.Id,
@@ -213,12 +243,14 @@ namespace aa.Controllers
         {
             return await (from task in context.Tasks
                           where task.AssigneeId == assigneeId
+                          join project in context.Projects on task.ProjectId equals project.Id
                           join creator in context.Users on task.CreatorId equals creator.Id
                           join assignee in context.Users on task.AssigneeId equals assignee.Id
                           select new TaskForDisplayDto
                           {
                               Id = task.Id,
-                              ProjectId = task.ProjectId,
+                              ProjectId = task.ProjectId, 
+                              ProjectName = project.Name, 
                               CreatorId = creator.Id,
                               CreatorName = creator.Name,
                               AssigneeId = assignee.Id,
@@ -241,10 +273,11 @@ namespace aa.Controllers
                 return NotFound();
             }
 
+            var project = await context.Projects.FindAsync(task.ProjectId); 
             var creator = await context.Users.FindAsync(task.CreatorId);
             var assignee = await context.Users.FindAsync(task.AssigneeId);
 
-            if (creator == null || assignee == null)
+            if (creator == null || assignee == null || project == null)
             {
                 return NotFound();
             }
@@ -253,6 +286,7 @@ namespace aa.Controllers
             {
                 Id = task.Id,
                 ProjectId = task.ProjectId,
+                ProjectName = project.Name, 
                 CreatorId = creator.Id,
                 CreatorName = creator.Name,
                 AssigneeId = assignee.Id,

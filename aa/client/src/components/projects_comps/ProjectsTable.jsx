@@ -58,6 +58,10 @@ export default function ProjetcsTable({type}) {
       </> 
       : 
       null}
+
+      {(projects.length == 0)? 
+      <p>No projects yet</p>  
+      :
       <table>
         <thead>
           <tr>
@@ -74,6 +78,7 @@ export default function ProjetcsTable({type}) {
             />)}
         </tbody>
       </table>
+    }
   </>
   )
 }

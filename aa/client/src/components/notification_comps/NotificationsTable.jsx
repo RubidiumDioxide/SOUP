@@ -20,12 +20,16 @@ export default function NotificationsTable({userId}) {
 
 return (
   <div>
-    {notifications.map(notification =>
+    {(notifications.length == 0)?
+    <p>No notifications yet</p>
+    :
+    notifications.map(notification =>
       <Notification
         key={notification.id}
         notification={notification}
         onAction={onAction}
-    />)}
+    />)
+    }
   </div>
   );
 } 
