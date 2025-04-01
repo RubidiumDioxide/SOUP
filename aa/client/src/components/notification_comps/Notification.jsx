@@ -30,7 +30,8 @@ export default function Notification({notification, notification:{id, projectId,
         userName: "",  // not needed for POST
         projectId : projectId,
         projectName : "", //not needed for POST 
-        role : role 
+        role : role,  
+        level : 0  
       } 
     }
     else if(type == "request"){
@@ -40,11 +41,10 @@ export default function Notification({notification, notification:{id, projectId,
         userName: "",  // not needed for POST
         projectId : projectId,
         projectName : "", //not needed for POST 
-        role : role 
+        role : role, 
+        level : 0 
       }  
     }
-
-    console.log(team); 
 
     fetch(`/api/Teams`, {
       method : "POST", 

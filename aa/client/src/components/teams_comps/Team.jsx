@@ -3,7 +3,7 @@ import Delete from './Delete';
 import {Link} from 'react-router-dom'; 
 
 // deconstructed props
-export default function Team({team, team:{id, userId, userName, projectId, projectName, role}, onAction, captureEdit, isCreator}) {
+export default function Team({team, team:{id, userId, userName, projectId, projectName, role, level}, onAction, captureEdit, isCreator}) {
   return (
     <tr key={id}>
       <td>

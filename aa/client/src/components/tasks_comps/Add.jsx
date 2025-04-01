@@ -3,7 +3,7 @@ import {React, useEffect, useState} from 'react'
 
 export default function Add({projectId, onAction}) {
     const [teammates, setTeammates] = useState([]); 
-    const [user, setUser] = useState({});
+    const userId = sessionStorage.getItem('savedUserID');
     const [addForm, setAddForm] = useState({
         name : "",
         description : "", 
@@ -11,11 +11,7 @@ export default function Add({projectId, onAction}) {
     }); 
 
     useEffect(() => {
-        fetch(`/api/Users/${sessionStorage.getItem('savedUserID')}`)
-            .then(response => response.json())
-            .then(data => setUser(data))
-
-        fetch(`/api/Teams/ForDisplay/Project/${projectId}`)
+        fetch(`/api/Teams/AssignableTeammates/ByUser/ForDisplay/${userId}/${projectId}`)
             .then(response => response.json())
             .then(data => setTeammates(data)); 
     }, [])
@@ -40,7 +36,7 @@ export default function Add({projectId, onAction}) {
             body : JSON.stringify({
                 id : 0, 
                 projectId : projectId, 
-                creatorId : user.id, 
+                creatorId : userId, 
                 assigneeId : 0, // no need to provide, controller method gets user on it's own 
                 name : addForm.name,
                 description : addForm.description, 

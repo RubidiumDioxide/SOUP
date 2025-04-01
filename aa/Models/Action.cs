@@ -11,7 +11,7 @@ public partial class Action
 
     public int ActorId { get; set; }
 
-    public int? TaskId { get; set; }
+    public int TaskId { get; set; }
 
     public string Description { get; set; } = null!;
 
@@ -21,5 +21,5 @@ public partial class Action
 
     public virtual Project Project { get; set; } = null!;
 
-    public virtual Task? Task { get; set; }
+    public virtual Task Task { get; set; } = null!;
 }

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using aa.Models;
 using aa.Views;
+using Microsoft.VisualStudio.Web.CodeGeneration;
+using System.Linq.Expressions;
 
 
 namespace aa.Controllers
@@ -129,21 +131,38 @@ namespace aa.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProjectDto>> CreateProject(ProjectDto projectdto)
+        public async Task<IActionResult> CreateProject(ProjectDto projectdto)
         {
             var project = new Project
             {
                 Name = projectdto.Name,
-                Description = projectdto.Description, 
-                Creator = projectdto.Creator 
-            }; 
+                Description = projectdto.Description,
+                Creator = projectdto.Creator
+            };
 
-            context.Projects.Add(project); 
+            context.Projects.Add(project);
+
             await context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(CreateProject), new { id = project.Id}, new ProjectDto(project));
+            project = context.Projects.FirstOrDefault(p => p.Name == projectdto.Name); 
+
+            var team = new Team
+            {
+                UserId = project.Creator, //implies creatorid, ofc. i'm a dummy and messed up the dtos 
+                ProjectId = project.Id,
+                Role = "Руководитель проекта",
+                Level = 0,
+            };
+            
+            context.Teams.Add(team);
+
+            await context.SaveChangesAsync();
+            
+            return NoContent();
         } 
 
+        //marked for deletion 
+        /*
         [HttpDelete("{id}")]
         public async Task<ActionResult<ProjectDto>> DeleteProject(int id)
         {
@@ -157,7 +176,8 @@ namespace aa.Controllers
             await context.SaveChangesAsync();
 
             return new ProjectDto(project); 
-        }
+        }*/ 
+
 
         private bool ProjectExists(int id)
         {

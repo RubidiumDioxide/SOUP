@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using aa.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace aa.Models;
@@ -36,7 +35,7 @@ public partial class SoupDbContext : DbContext
     {
         modelBuilder.Entity<Action>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ACTION__3214EC2784BB3D71");
+            entity.HasKey(e => e.Id).HasName("PK__ACTION__3214EC271D85FE68");
 
             entity.ToTable("ACTION");
 
@@ -50,21 +49,22 @@ public partial class SoupDbContext : DbContext
             entity.HasOne(d => d.Actor).WithMany(p => p.Actions)
                 .HasForeignKey(d => d.ActorId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ACTION__ActorID__5B438874");
+                .HasConstraintName("FK__ACTION__ActorID__062DE679");
 
             entity.HasOne(d => d.Project).WithMany(p => p.Actions)
                 .HasForeignKey(d => d.ProjectId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ACTION__ProjectI__5A4F643B");
+                .HasConstraintName("FK__ACTION__ProjectI__0539C240");
 
             entity.HasOne(d => d.Task).WithMany(p => p.Actions)
                 .HasForeignKey(d => d.TaskId)
-                .HasConstraintName("FK__ACTION__TaskID__5C37ACAD");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ACTION__TaskID__07220AB2");
         });
 
         modelBuilder.Entity<Notification>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__NOTIFICA__3214EC275F10BA43");
+            entity.HasKey(e => e.Id).HasName("PK__NOTIFICA__3214EC270475C096");
 
             entity.ToTable("NOTIFICATION");
 
@@ -78,17 +78,17 @@ public partial class SoupDbContext : DbContext
             entity.HasOne(d => d.Project).WithMany(p => p.Notifications)
                 .HasForeignKey(d => d.ProjectId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__NOTIFICAT__Proje__2116E6DF");
+                .HasConstraintName("FK__NOTIFICAT__Proje__78D3EB5B");
 
             entity.HasOne(d => d.Receiver).WithMany(p => p.NotificationReceivers)
                 .HasForeignKey(d => d.ReceiverId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__NOTIFICAT__Recei__22FF2F51");
+                .HasConstraintName("FK__NOTIFICAT__Recei__7ABC33CD");
 
             entity.HasOne(d => d.Sender).WithMany(p => p.NotificationSenders)
                 .HasForeignKey(d => d.SenderId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__NOTIFICAT__Sende__220B0B18");
+                .HasConstraintName("FK__NOTIFICAT__Sende__79C80F94");
         });
 
         modelBuilder.Entity<Project>(entity =>
@@ -111,7 +111,7 @@ public partial class SoupDbContext : DbContext
 
         modelBuilder.Entity<Task>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__TASK__3214EC27E805C5BE");
+            entity.HasKey(e => e.Id).HasName("PK__TASK__3214EC27483053A5");
 
             entity.ToTable("TASK");
 
@@ -125,26 +125,30 @@ public partial class SoupDbContext : DbContext
             entity.HasOne(d => d.Assignee).WithMany(p => p.TaskAssignees)
                 .HasForeignKey(d => d.AssigneeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TASK__AssigneeID__4924D839");
+                .HasConstraintName("FK__TASK__AssigneeID__0169315C");
 
             entity.HasOne(d => d.Creator).WithMany(p => p.TaskCreators)
                 .HasForeignKey(d => d.CreatorId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TASK__CreatorID__4830B400");
+                .HasConstraintName("FK__TASK__CreatorID__00750D23");
 
             entity.HasOne(d => d.Project).WithMany(p => p.Tasks)
                 .HasForeignKey(d => d.ProjectId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TASK__ProjectID__473C8FC7");
+                .HasConstraintName("FK__TASK__ProjectID__7F80E8EA");
         });
 
         modelBuilder.Entity<Team>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__TEAM__3214EC27FFA03552");
+            entity.HasKey(e => e.Id).HasName("PK__TEAM__3214EC275F2A10ED");
 
             entity.ToTable("TEAM");
 
-            entity.HasIndex(e => new { e.UserId, e.ProjectId, e.Role }, "UQ__TEAM__3E33720181741447").IsUnique();
+            entity.HasIndex(e => new { e.ProjectId, e.Role }, "IX_UC_SingleManagers")
+                .IsUnique()
+                .HasFilter("([Role] IN ('Руководитель проекта', 'Руководитель отдела дизайна', 'Руководитель отдела разработки', 'Руководитель отдела внедрения и тестирования', 'Руководитель отдела информационной безопасности', 'Руководитель отдела аналитики'))");
+
+            entity.HasIndex(e => new { e.UserId, e.ProjectId, e.Role }, "UQ__TEAM__3E3372010C3B4297").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
@@ -154,12 +158,12 @@ public partial class SoupDbContext : DbContext
             entity.HasOne(d => d.Project).WithMany(p => p.Teams)
                 .HasForeignKey(d => d.ProjectId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TEAM__ProjectID__68D28DBC");
+                .HasConstraintName("FK__TEAM__ProjectID__740F363E");
 
             entity.HasOne(d => d.User).WithMany(p => p.Teams)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TEAM__UserID__67DE6983");
+                .HasConstraintName("FK__TEAM__UserID__731B1205");
         });
 
         modelBuilder.Entity<User>(entity =>

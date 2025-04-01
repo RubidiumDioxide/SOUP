@@ -13,6 +13,8 @@ public partial class Team
 
     public string Role { get; set; } = null!;
 
+    public int Level { get; set; }
+
     public virtual Project Project { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;

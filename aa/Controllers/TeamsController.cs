@@ -17,6 +17,83 @@ namespace aa.Controllers
     {
         private readonly SoupDbContext context;
 
+        Dictionary<string, string[]> Doms = new Dictionary<string, string[]>(){
+            { "Руководитель проекта",
+                [ "Руководитель отдела дизайна",
+                "Руководитель отдела разработки",
+                "Руководитель отдела внедрения и тестирования",
+                "Руководитель отдела информационной безопасности",
+                "Руководитель отдела аналитики" ]
+            },
+            {
+                "Руководитель отдела дизайна",
+                [ "Веб-дизайнер", 
+                "Графический дизайнер", 
+                "3D-дизайнер", 
+                "UI/UX дизайнер" ]
+            }, 
+            {
+                "Руководитель отдела разработки",
+                [ "Архитектор",
+                "Fullstack-разработчик",
+                "Front end-разработчик",
+                "Back end-разработчик",
+                "Разработчик баз данных" ] 
+            },
+            {
+                "Руководитель отдела внедрения и тестирования", 
+                [ "DevOps-инженер",
+                "Тестировщик" ]
+            },
+            {
+                "Руководитель отдела информационной безопасности",
+                [ "Специалист по безопасности", 
+                "Системный администратор" ]
+            },
+            {
+                "Руководитель отдела аналитики",
+                [ "Бизнес-аналитик", 
+                "Системный аналитик" ]
+            },
+        }; 
+
+        private string getDom(string sub)
+        {
+            return Doms.FirstOrDefault(x => x.Value.Contains(sub)).Key;
+        }
+
+        private readonly List<string>[] role_levels = new List<string>[]
+        {
+            new List<string> { "Руководитель проекта" },
+            new List<string>
+            {
+                "Руководитель отдела дизайна",
+                "Руководитель отдела разработки",
+                "Руководитель отдела внедрения и тестирования",
+                "Руководитель отдела информационной безопасности",
+                "Руководитель отдела аналитики"
+            },
+            new List<string> 
+            { 
+                "Веб-дизайнер", 
+                "Графический дизайнер", 
+                "3D-дизайнер", 
+                "UI/UX дизайнер", 
+                "Архитектор", 
+                "Fullstack-разработчик", 
+                "Front end-разработчик", 
+                "Back end-разработчик", 
+                "Разработчик баз данных", 
+                "DevOps-инженер", 
+                "Тестировщик", 
+                "Специалист по безопасности", 
+                "Системный администратор", 
+                "Бизнес-аналитик", 
+                "Системный аналитик" 
+            }
+        };
+
+
         public TeamsController(SoupDbContext _context)
         {
             context = _context;
@@ -26,34 +103,23 @@ namespace aa.Controllers
         [HttpGet("ForDisplay")]
         public async Task<ActionResult<IEnumerable<TeamForDisplayDto>>> GetTeams()
         {
-            return await context.Teams.Join(context.Users,
-                t => t.UserId,
-                u => u.Id,
-                (t, u) => new { t.Id, t.UserId, u.Name, t.ProjectId, t.Role }
-                )
-                .Join(context.Projects,
-                temp => temp.ProjectId,
-                p => p.Id,
-                (temp, p) => new TeamForDisplayDto(temp.Id, temp.UserId, temp.Name, temp.ProjectId, p.Name, temp.Role))
-                .ToListAsync();
+            return await (from team in context.Teams
+                          join user in context.Users on team.UserId equals user.Id
+                          join project in context.Projects on team.ProjectId equals project.Id
+                          select new TeamForDisplayDto(team, user.Name, project.Name))
+                          .ToListAsync();
         }
 
         // GET: api/Teams/ForDisplay/Project/5
         [HttpGet("ForDisplay/Project/{projectId}")]
         public async Task<ActionResult<IEnumerable<TeamForDisplayDto>>> GetTeamsProjects(int projectId)
         {
-            return await context.Teams
-                .Where(t => t.ProjectId == projectId)
-                .Join(context.Users,
-                t => t.UserId,
-                u => u.Id,
-                (t, u) => new { t.Id, t.UserId, u.Name, t.ProjectId, t.Role }
-                )
-                .Join(context.Projects,
-                temp => temp.ProjectId,
-                p => p.Id,
-                (temp, p) => new TeamForDisplayDto(temp.Id, temp.UserId, temp.Name, temp.ProjectId, p.Name, temp.Role))
-                .ToListAsync();
+            return await (from team in context.Teams
+                          where team.ProjectId == projectId 
+                          join user in context.Users on team.UserId equals user.Id
+                          join project in context.Projects on team.ProjectId equals project.Id
+                          select new TeamForDisplayDto(team, user.Name, project.Name))
+                          .ToListAsync();
         }
 
         // GET: api/Teams/ForDisplay/5
@@ -77,6 +143,31 @@ namespace aa.Controllers
 
             return new TeamForDisplayDto(team, user.Name, project.Name);
         }
+
+        // GET: api/Teams/AssignableTeammates/ByUserProject/ForDisplay/5/3 
+        [HttpGet("AssignableTeammates/ByUser/ForDisplay/${userId}/${projectId}")]
+        public async Task<ActionResult<IEnumerable<TeamForDisplayDto>>> GetAssignableTeammatesForDisplay(int userId, int projectId)
+        {
+            var user_as_teammate = await (from team in context.Teams
+                                          where (team.UserId == userId && team.ProjectId == projectId)
+                                          orderby team.Level descending
+                                          select new TeamDto(team))
+                                          .FirstOrDefaultAsync();
+
+            if (user_as_teammate == null)
+            {
+                return NotFound();
+            }
+
+            return await (from team in context.Teams
+                          where (team.UserId != userId) && (team.ProjectId == projectId)
+                          join teammate in context.Users on team.UserId equals teammate.Id
+                          where (team.Level <= user_as_teammate.Level && getDom(team.Role) == getDom(user_as_teammate.Role)) 
+                          join project in context.Projects on team.ProjectId equals project.Id
+                          select new TeamForDisplayDto(team, teammate.Name, project.Name))
+                          .ToListAsync();
+        }
+
 
         // PUT: api/Teams/5
         [HttpPut("{id}")]
@@ -102,7 +193,8 @@ namespace aa.Controllers
                 return NotFound();
             }
 
-            team.Role = teamdto.Role;  //in case of chenging role specifically; if there's any need to change all, rewrite method 
+            team.Role = teamdto.Role;  //in case of changing role specifically; if there's any need to change all, rewrite method 
+            team.Level = Array.FindIndex(role_levels, level => level.Contains(teamdto.Role));
 
             try
             {
@@ -116,6 +208,7 @@ namespace aa.Controllers
             return NoContent(); 
         }
 
+ 
         // POST: api/Teams
         [HttpPost]
         public async Task<IActionResult> CreateTeam(TeamForDisplayDto teamdto)
@@ -124,7 +217,8 @@ namespace aa.Controllers
             {
                 UserId = teamdto.UserId,
                 ProjectId = teamdto.ProjectId,
-                Role = teamdto.Role
+                Role = teamdto.Role, 
+                Level = Array.FindIndex(role_levels, level => level.Contains(teamdto.Role)) 
             }; 
 
             context.Teams.Add(team);
@@ -145,13 +239,12 @@ namespace aa.Controllers
                 return NotFound(); 
             }
 
-            teamdto.UserId = user.Id; 
-            
             var team = new Team
             {
-                UserId = teamdto.UserId,
+                UserId = user.Id,
                 ProjectId = teamdto.ProjectId,
-                Role = teamdto.Role
+                Role = teamdto.Role, 
+                Level = Array.FindIndex(role_levels, level => level.Contains(teamdto.Role))
             };
 
             context.Teams.Add(team);
@@ -161,6 +254,7 @@ namespace aa.Controllers
             return NoContent();
         }
 
+        
         // DELETE: api/Teams/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTeam(int id)
@@ -172,11 +266,17 @@ namespace aa.Controllers
                 return NotFound();
             }
 
+            if(team.Level == 0)
+            {
+                return BadRequest("Нельзя выгнать из клманды руководителя проекта"); 
+            }
+
             context.Teams.Remove(team);
             await context.SaveChangesAsync();
 
             return NoContent();
         }
+
 
         private bool TeamExists(int id)
         {

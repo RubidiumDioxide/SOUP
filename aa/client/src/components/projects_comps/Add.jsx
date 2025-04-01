@@ -17,14 +17,15 @@ export default function Add({ onAction }) {
 
     function handleAddForm(e) {
         e.preventDefault();
-        
+
         fetch('/api/Projects', {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
             },
-            body: JSON.stringify(addForm),
+            body: JSON.stringify(addForm) 
         })
+            .then(response => response.json())
             .then(onAction)
     }
 
@@ -32,9 +33,9 @@ export default function Add({ onAction }) {
         <div>
             <h4>New Project</h4>
             <form onSubmit={handleAddForm}>
-                <input type="text" name="name" placeholder="project name" value={addForm.name} onChange={handleFormChange}/>
-                <input type="text" name="description" placeholder="description" value={addForm.description} onChange={handleFormChange}/>
-                <button type="submit">Create Project</button>
+                <input class='rounded-input' type="text" name="name" placeholder="project name" value={addForm.name} onChange={handleFormChange}/>
+                <input class='rounded-input' type="text" name="description" placeholder="description" value={addForm.description} onChange={handleFormChange}/>
+                <button class='rounded-button' type="submit">Create Project</button>
             </form>
         </div>
     )

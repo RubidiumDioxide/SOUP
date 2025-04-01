@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Team from "./Team"; 
 import Add from "./Invite"; 
-import Edit from "./Edit";
+import ChangeRole from "./ChangeRole";
 
 export default function TeamsTable({isCreator, projectId}) {
   const [teams, setTeams] = useState([]);
@@ -51,7 +51,7 @@ return (
       : null}
 
       {isEditing? 
-      (<Edit
+      (<ChangeRole
           team={capturedTeam}
           onAction={onAction}
         />)

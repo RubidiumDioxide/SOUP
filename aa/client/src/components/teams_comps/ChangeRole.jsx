@@ -2,7 +2,7 @@ import {React, useState} from 'react'
 
 const uri = '/api/Teams';
 
-export default function Edit({team, onAction}) {
+export default function ChangeRole({team, onAction}) {
     const [editForm, setEditForm] = useState({
         userId : team.userId,
         userName: team.userName,  //not needed 

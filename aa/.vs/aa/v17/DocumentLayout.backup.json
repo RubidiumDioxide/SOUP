@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\controllers\\actionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:controllers\\actionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\models\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:models\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\views\\actionfordisplaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:views\\actionfordisplaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\views\\taskfordisplaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:views\\taskfordisplaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\views\\taskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:views\\taskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\views\\teamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:views\\teamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 119,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,66 +34,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TaskForDisplayDto.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\TaskForDisplayDto.cs",
-              "RelativeDocumentMoniker": "Views\\TaskForDisplayDto.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\TaskForDisplayDto.cs",
-              "RelativeToolTip": "Views\\TaskForDisplayDto.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAiwCgAAAAYAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "TeamsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\TeamsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TeamsController.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\TeamsController.cs",
+              "RelativeToolTip": "Controllers\\TeamsController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAANIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T14:08:59.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-01T10:33:02.29Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TasksController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\TasksController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TasksController.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\TasksController.cs",
-              "RelativeToolTip": "Controllers\\TasksController.cs",
-              "ViewState": "AgIAAOkAAAAAAAAAAAAqwB8BAAArAAAAAAAAAA==",
+              "Title": "Team.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Team.cs",
+              "RelativeDocumentMoniker": "Models\\Team.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Team.cs",
+              "RelativeToolTip": "Models\\Team.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T19:49:34.525Z",
+              "WhenOpened": "2025-04-01T10:33:29.972Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TaskDto.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\TaskDto.cs",
-              "RelativeDocumentMoniker": "Views\\TaskDto.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\TaskDto.cs",
-              "RelativeToolTip": "Views\\TaskDto.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAcAAAAqAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "TeamDto.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\TeamDto.cs",
+              "RelativeDocumentMoniker": "Views\\TeamDto.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\TeamDto.cs",
+              "RelativeToolTip": "Views\\TeamDto.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAswBsAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T19:42:03.509Z"
-            },
+              "WhenOpened": "2025-04-01T10:33:08.705Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 119,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ActionsController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\ActionsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ActionsController.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\ActionsController.cs",
-              "RelativeToolTip": "Controllers\\ActionsController.cs",
-              "ViewState": "AgIAAMIAAAAAAAAAAADwv88AAAAJAAAAAAAAAA==",
+              "Title": "ProjectsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\ProjectsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProjectsController.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\ProjectsController.cs",
+              "RelativeToolTip": "Controllers\\ProjectsController.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAcwJYAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T19:48:23.49Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ActionForDisplayDto.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\ActionForDisplayDto.cs",
-              "RelativeDocumentMoniker": "Views\\ActionForDisplayDto.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\ActionForDisplayDto.cs",
-              "RelativeToolTip": "Views\\ActionForDisplayDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T06:40:32.66Z",
+              "WhenOpened": "2025-04-01T12:31:49.401Z",
               "EditorCaption": ""
             }
           ]

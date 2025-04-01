@@ -7,7 +7,7 @@ namespace aa.Views
         public int Id { get; set; }
         public int ProjectId { get; set; }
         public int ActorId { get; set; }
-        public int? TaskId { get; set; }
+        public int TaskId { get; set; }
         public string Description { get; set; } = null!;
         public DateTime Date { get; set; }
 
@@ -21,7 +21,7 @@ namespace aa.Views
             Date = a.Date;
         }
 
-        public ActionDto(int id, int projectId, int actorId, int? taskId, string description, DateTime date)
+        public ActionDto(int id, int projectId, int actorId, int taskId, string description, DateTime date)
         {
             Id = id;
             ProjectId = projectId;

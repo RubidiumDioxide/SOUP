@@ -2,8 +2,7 @@ import React from 'react'
 
 const uri = '/api/Teams';
 
-export default function Delete({team, team:{id, userId, userName, projectId, projectName, role}, onAction}) {
-
+export default function Delete({team, team:{id, userId, userName, projectId, projectName, role, level}, onAction}) {
     function handleDeleteForm(e) {
         e.preventDefault(); 
         fetch(uri + `/${id}`, {

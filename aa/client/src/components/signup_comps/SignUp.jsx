@@ -20,7 +20,7 @@ export default function SignUp({changeAppState}) {
 
     function handleSignUpForm(e){
         e.preventDefault(); 
-        console.log(JSON.stringify(signUpForm));
+        
         fetch(uri, {
             method: "POST", 
             headers: {
