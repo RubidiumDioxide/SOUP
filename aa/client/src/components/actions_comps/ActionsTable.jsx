@@ -14,13 +14,13 @@ export default function ActionsTable({projectId, taskId, actorId, isTaskComplete
 
   var uri
   if(type=="byproject"){
-    uri = `/api/Actions/ByProject/${projectId}`
+    uri = `/api/Actions/ByProject/ForDisplay/${projectId}`
   }
   if(type=="bytask"){
-    uri = `/api/Actions/ByTask/${taskId}`
+    uri = `/api/Actions/ByTask/ForDisplay/${taskId}`
   }
   if(type=="byactor"){
-    uri = `/api/Actions/ByActor/${actorId}`
+    uri = `/api/Actions/ByActor/ForDisplay/${actorId}`
   }
 
   useEffect(()=>{
@@ -63,7 +63,7 @@ return (
             Add Action to the Task           
           </button>
             
-          (isAdding || isFinishing)?
+          {(isAdding || isFinishing)?
           <AddFinish
             projectId={projectId} 
             taskId={taskId} 
@@ -71,7 +71,7 @@ return (
             type={(isFinishing)?"finish":"add"}
           />
           : 
-          null
+          null}
         </> 
         :
         null
@@ -85,6 +85,16 @@ return (
     <table>
       <thead>
         <tr>
+          {(type != 'byproject' && type != 'bytask')?
+            <th>Project</th>
+            :
+            null
+          }
+          {(type != 'bytask')?
+            <th>Task</th>
+            :
+            null
+          }
           <th>Description</th>
           <th>Actor</th>
           <th>Date&Time</th>
@@ -95,6 +105,7 @@ return (
           <Action
             key={[action.id]}
             action={action}
+            type={type}
           />)}
       </tbody>
     </table>

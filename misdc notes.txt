@@ -28,8 +28,16 @@ add taskdto & fordisplay				DONE
 add tasks tab that displays user's assigned tasks 	DONE
 add indtask page   	 				DONE 
 
-add actions sql table & controller	
-add actions component and section to indproject page 
+add actions sql table & controller			DONE
+add actions component and section to indproject page 	DONE
 
-add finishing a task(as an assignee), connected to an action 				
+add finishing a task(as an assignee), connected to an action 				DONE 				
 
+add action fordisplay dto and controller methids, upgrade jsx components to use them  
+change possible roles in database and in components 
+add new contoller method that gets people you can aasign tasks to depending on your & their position (according to A) 
+
+add repository field to project and github user page field to user, display them 
+hopefully add last action displaying at the project page (via webhooks) 
+
+speed up the signing in 

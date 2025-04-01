@@ -30,6 +30,8 @@ export default function Add({projectId, onAction}) {
     function handleAddForm(e) {
         e.preventDefault();
 
+        console.log(addForm.assigneeName); 
+
         fetch(`/api/Tasks/${addForm.assigneeName}`, {
             method : "POST", 
             headers : {
@@ -55,7 +57,8 @@ export default function Add({projectId, onAction}) {
 
                 <input class='rounded-input' type="text" name="description" placeholder="task description" value={addForm.description} onChange={handleFormChange}/>
 
-                <select class='rounded-select' name="assigneeName" onChange={handleFormChange}>
+                <select class='rounded-select' value={addForm.assigneeName} name="assigneeName" onChange={handleFormChange}>
+                    <option value="">Select Assignee</option> 
                     {teammates.map(teammate => 
                         <option key={teammate.id} value={teammate.userName.toString()}>{teammate.userName}</option>
                     )}    

@@ -161,5 +161,80 @@ namespace aa.Controllers
         {
             return context.Actions.Any(e => e.Id == id);
         }
+
+
+        // FOR DISPLAY
+        // GET: api/Actions/ForDisplay
+        [HttpGet("ForDisplay")]
+        public async Task<ActionResult<IEnumerable<ActionForDisplayDto>>> GetActionsForDisplay()
+        {
+            return await (from action in context.Actions
+                          join project in context.Projects on action.ProjectId equals project.Id
+                          join actor in context.Users on action.ActorId equals actor.Id
+                          join task in context.Tasks on action.TaskId equals task.Id
+                          select new ActionForDisplayDto(action, project.Name, actor.Name, task.Name))
+                          .ToListAsync();
+        }
+
+        // GET: api/Actions/ByProject/ForDisplay/5
+        [HttpGet("ByProject/ForDisplay/{projectId}")]
+        public async Task<ActionResult<IEnumerable<ActionForDisplayDto>>> GetActionsByProjectForDisplay(int projectId)
+        {
+            return await (from action in context.Actions
+                          where action.ProjectId == projectId
+                          join project in context.Projects on action.ProjectId equals project.Id
+                          join actor in context.Users on action.ActorId equals actor.Id
+                          join task in context.Tasks on action.TaskId equals task.Id
+                          select new ActionForDisplayDto(action, project.Name, actor.Name, task.Name))
+              .ToListAsync();
+        }
+
+        // GET: api/Actions/ByActor/ForDisplay/5
+        [HttpGet("ByActor/ForDisplay/{actorId}")]
+        public async Task<ActionResult<IEnumerable<ActionForDisplayDto>>> GetActionsByActionForDisplay(int actorId)
+        {
+            return await (from action in context.Actions
+                          where action.ActorId == actorId 
+                          join project in context.Projects on action.ProjectId equals project.Id
+                          join actor in context.Users on action.ActorId equals actor.Id
+                          join task in context.Tasks on action.TaskId equals task.Id
+                          select new ActionForDisplayDto(action, project.Name, actor.Name, task.Name))
+              .ToListAsync();
+        }
+
+        // GET: api/Actions/ByTask/ForDisplay/5
+        [HttpGet("ByTask/ForDisplay/{taskId}")]
+        public async Task<ActionResult<IEnumerable<ActionForDisplayDto>>> GetActionsByTaskForDisplay(int taskId)
+        {
+            return await (from action in context.Actions
+                          where action.TaskId == taskId 
+                          join project in context.Projects on action.ProjectId equals project.Id
+                          join actor in context.Users on action.ActorId equals actor.Id
+                          join task in context.Tasks on action.TaskId equals task.Id
+                          select new ActionForDisplayDto(action, project.Name, actor.Name, task.Name))
+              .ToListAsync();
+        }
+
+        // GET: api/Actions/ForDisplay/5
+        [HttpGet("ForDisplay/{id}")]
+        public async Task<ActionResult<ActionForDisplayDto>> GetActionForDisplay(int id)
+        {
+            var action = await context.Actions.FindAsync(id);
+
+            if (action == null)
+            {
+                return NotFound();
+            }
+            var project = await context.Projects.FindAsync(action.ProjectId);
+            var actor = await context.Users.FindAsync(action.ActorId);
+            var task = await context.Tasks.FindAsync(action.TaskId);
+
+            if (project == null || actor == null || task == null)
+            {
+                return NotFound();
+            }
+
+            return new ActionForDisplayDto(action, project.Name, actor.Name, task.Name);
+        }
     }
 }
