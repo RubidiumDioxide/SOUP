@@ -25,7 +25,6 @@ export default function Add({ onAction }) {
             },
             body: JSON.stringify(addForm) 
         })
-            .then(response => response.json())
             .then(onAction)
     }
 

@@ -93,7 +93,6 @@ namespace aa.Controllers
             }
         };
 
-
         public TeamsController(SoupDbContext _context)
         {
             context = _context;
@@ -145,27 +144,51 @@ namespace aa.Controllers
         }
 
         // GET: api/Teams/AssignableTeammates/ByUserProject/ForDisplay/5/3 
-        [HttpGet("AssignableTeammates/ByUser/ForDisplay/${userId}/${projectId}")]
-        public async Task<ActionResult<IEnumerable<TeamForDisplayDto>>> GetAssignableTeammatesForDisplay(int userId, int projectId)
+        [HttpGet("AssignableTeammates/ByUserProject/ForDisplay/{userId}/{projectId}")]
+        public async Task<ActionResult<IEnumerable<string>>> GetAssignableTeammatesForDisplay(int userId, int projectId)
         {
             var user_as_teammate = await (from team in context.Teams
                                           where (team.UserId == userId && team.ProjectId == projectId)
-                                          orderby team.Level descending
+                                          orderby team.Level ascending
                                           select new TeamDto(team))
                                           .FirstOrDefaultAsync();
 
             if (user_as_teammate == null)
-            {
-                return NotFound();
-            }
+                return BadRequest();
 
+         
             return await (from team in context.Teams
-                          where (team.UserId != userId) && (team.ProjectId == projectId)
-                          join teammate in context.Users on team.UserId equals teammate.Id
-                          where (team.Level <= user_as_teammate.Level && getDom(team.Role) == getDom(user_as_teammate.Role)) 
-                          join project in context.Projects on team.ProjectId equals project.Id
-                          select new TeamForDisplayDto(team, teammate.Name, project.Name))
-                          .ToListAsync();
+                        where team.ProjectId == projectId && team.Level >= user_as_teammate.Level
+                        join teammate in context.Users on team.UserId equals teammate.Id
+                        select teammate.Name)
+                        .Distinct()
+                        .ToListAsync();
+
+
+            /*if (user_as_teammate.Level == 1)
+                return await (from team in context.Teams
+                                  //same-level users or subs
+                              where team.ProjectId == projectId
+                              join teammate in context.Users on team.UserId equals teammate.Id
+                              join project in context.Projects on team.ProjectId equals project.Id
+                              select new TeamForDisplayDto(team, teammate.Name, project.Name))
+                    .Where(teammate => (teammate.Level == user_as_teammate.Level || getDom(teammate.Role) == user_as_teammate.Role))
+                    .Select(teammate => teammate.UserName)
+                    .ToListAsync(); 
+
+
+            if (user_as_teammate.Level == 2)
+                return await (from team in context.Teams
+                              where team.ProjectId == projectId
+                              join teammate in context.Users on team.UserId equals teammate.Id
+                              // same-level users in same dept 
+                              join project in context.Projects on team.ProjectId equals project.Id
+                              select new TeamForDisplayDto(team, teammate.Name, project.Name))
+                              .Where(teammate => (teammate.Level == user_as_teammate.Level && getDom(teammate.Role) == getDom(user_as_teammate.Role)))
+                              .Select(teammate => teammate.UserName)
+                              .ToListAsync();*/
+
+            return NotFound();
         }
 
 

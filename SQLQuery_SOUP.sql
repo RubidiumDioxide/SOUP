@@ -18,6 +18,7 @@ BEGIN
 END;
 GO
 
+
 CREATE TABLE [PROJECT](
 	[ID] int IDENTITY PRIMARY KEY, 
 	[Name] nvarchar(50) NOT NULL UNIQUE, 
@@ -35,6 +36,7 @@ BEGIN
     ROLLBACK TRANSACTION; 
 END;
 GO
+
 
 CREATE TABLE [TEAM](
 	[ID] int IDENTITY PRIMARY KEY NOT NULL,  
@@ -80,6 +82,50 @@ WHERE [Role] IN (
     'Руководитель отдела аналитики'
 );
 
+/*CREATE TABLE DomRoles (
+    DomRole NVARCHAR(255),
+    SubRole NVARCHAR(255)
+);
+
+INSERT INTO DomRoles (DomRole, SubRole)
+VALUES 
+    ('Руководитель проекта', 'Руководитель отдела дизайна'),
+    ('Руководитель проекта', 'Руководитель отдела разработки'),
+    ('Руководитель проекта', 'Руководитель отдела внедрения и тестирования'),
+    ('Руководитель проекта', 'Руководитель отдела информационной безопасности'),
+    ('Руководитель проекта', 'Руководитель отдела аналитики'),
+    ('Руководитель отдела дизайна', 'Веб-дизайнер'), 
+    ('Руководитель отдела дизайна', 'Графический дизайнер'), 
+    ('Руководитель отдела дизайна', '3D-дизайнер'), 
+    ('Руководитель отдела дизайна', 'UI/UX дизайнер'), 
+    ('Руководитель отдела разработки', 'Архитектор'),
+    ('Руководитель отдела разработки', 'Fullstack-разработчик'),
+    ('Руководитель отдела разработки', 'Front end-разработчик'),
+    ('Руководитель отдела разработки', 'Back end-разработчик'),
+    ('Руководитель отдела разработки', 'Разработчик баз данных'), 
+    ('Руководитель отдела внедрения и тестирования', 'DevOps-инженер'),
+    ('Руководитель отдела внедрения и тестирования', 'Тестировщик'),
+    ('Руководитель отдела информационной безопасности', 'Специалист по безопасности'), 
+    ('Руководитель отдела информационной безопасности', 'Системный администратор'),
+    ('Руководитель отдела аналитики', 'Бизнес-аналитик'), 
+    ('Руководитель отдела аналитики', 'Системный аналитик');
+GO
+
+CREATE FUNCTION dbo.GetDomRole(@SubRole NVARCHAR(255))
+RETURNS NVARCHAR(255)
+AS
+BEGIN
+    DECLARE @DomRole NVARCHAR(255);
+    
+    SELECT @DomRole = DomRole
+    FROM DomRoles
+    WHERE SubRole = @SubRole;
+
+    RETURN @DomRole;
+END;
+GO */
+
+
 CREATE TABLE [NOTIFICATION](
 	[ID] int IDENTITY PRIMARY KEY NOT NULL, 
 	[ProjectID] int FOREIGN KEY REFERENCES [PROJECT]([ID]) ON DELETE NO ACTION NOT NULL, 
@@ -113,6 +159,7 @@ CREATE TABLE [NOTIFICATION](
 )
 GO
 
+
 CREATE TABLE [TASK](
 	[ID] int IDENTITY PRIMARY KEY NOT NULL, 
 	[ProjectID] int FOREIGN KEY REFERENCES [PROJECT]([ID]) ON DELETE NO ACTION NOT NULL, 
@@ -124,6 +171,7 @@ CREATE TABLE [TASK](
 )
 GO
 
+
 CREATE TABLE [ACTION](
 	[ID] int IDENTITY PRIMARY KEY NOT NULL, 
 	[ProjectID] int FOREIGN KEY REFERENCES [PROJECT]([ID]) ON DELETE NO ACTION NOT NULL, 
@@ -132,4 +180,3 @@ CREATE TABLE [ACTION](
 	[Description] nvarchar(500) NOT NULL, 
 	[Date] datetime NOT NULL
 )
-

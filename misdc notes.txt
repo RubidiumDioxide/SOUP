@@ -1,5 +1,9 @@
 "Server=WIN-4E7JKGBR3SV\\SQLEXPRESS;Database=soup_DB;TrustServerCertificate=True;Encrypt=False;user id=sa;password=1234;"
 
+Scaffold-DbContext "Server=WIN-4E7JKGBR3SV\SQLEXPRESS;Database=soup_DB;TrustServerCertificate=True;Encrypt=False;user id=sa;password=1234;" Microsoft.EntityFrameworkCore.SqlServer -f
+
+
+
 to-do: 
 Add login 						DONE
 Add a starting page with login/signup options		DONE
@@ -33,7 +37,7 @@ add finishing a task(as an assignee), connected to an action 				DONE
 
 add action fordisplay dto and controller methids, upgrade jsx components to use them  		DONE
 change possible roles in database and in components  	DONE
-add new contoller method that gets people you can aasign tasks to depending on your & their position (according to A) 
+add new contoller method that gets people you can aasign tasks to depending on your & their position (according to A)  	SOMEWHAT, TESTED POORLY
 
 add repository field to project and github user page field to user, display them 
 hopefully add last action displaying at the project page (via webhooks) 

@@ -984,7 +984,7 @@
   {
     "ContainingType": "aa.Controllers.TeamsController",
     "Method": "GetAssignableTeammatesForDisplay",
-    "RelativePath": "api/Teams/AssignableTeammates/ByUser/ForDisplay/${userId}/${projectId}",
+    "RelativePath": "api/Teams/AssignableTeammates/ByUserProject/ForDisplay/{userId}/{projectId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1002,7 +1002,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[aa.Views.TeamForDisplayDto, aa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

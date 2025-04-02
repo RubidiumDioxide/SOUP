@@ -1747,7 +1747,7 @@
         }
       }
     },
-    "/api/Teams/AssignableTeammates/ByUser/ForDisplay/${userId}/${projectId}": {
+    "/api/Teams/AssignableTeammates/ByUserProject/ForDisplay/{userId}/{projectId}": {
       "get": {
         "tags": [
           "Teams"
@@ -1780,7 +1780,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/TeamForDisplayDto"
+                    "type": "string"
                   }
                 }
               },
@@ -1788,7 +1788,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/TeamForDisplayDto"
+                    "type": "string"
                   }
                 }
               },
@@ -1796,7 +1796,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/TeamForDisplayDto"
+                    "type": "string"
                   }
                 }
               }

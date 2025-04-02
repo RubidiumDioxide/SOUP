@@ -6,6 +6,7 @@ export default function TasksTable({isCreator, projectId, type}) {
   const [tasks, setTasks] = useState([]);
   const [refreshCond, setRefreshCond] = useState([false]);   
   const [isAdding, setIsAdding] = useState(false); 
+  const [isInTeam, setIsInTeam] = useState(false); 
   const userId = sessionStorage.getItem('savedUserID');
 
   var uri
@@ -21,6 +22,16 @@ export default function TasksTable({isCreator, projectId, type}) {
     .then(response => response.json())
     .then(data => setTasks(data)); 
     setRefreshCond([false]); 
+
+    fetch(`/api/users/isinteam/${Number(sessionStorage.getItem("savedUserID"))}/${projectId}`)
+    .then(response => { 
+      if(response.ok){
+        setIsInTeam(true); 
+      }
+      else{
+        setIsInTeam(false); 
+      }
+    })
   }, refreshCond)
 
   function onAction(){
@@ -33,7 +44,7 @@ export default function TasksTable({isCreator, projectId, type}) {
 
 return (
   <div>
-    {isCreator? <div>
+    {isInTeam? <div>
       <button class='rounded-button' onClick={changeAddState}>
         New task
       </button>

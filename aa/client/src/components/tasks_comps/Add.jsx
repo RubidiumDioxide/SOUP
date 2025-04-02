@@ -2,8 +2,8 @@ import { Descriptions } from 'antd';
 import {React, useEffect, useState} from 'react'
 
 export default function Add({projectId, onAction}) {
-    const [teammates, setTeammates] = useState([]); 
-    const userId = sessionStorage.getItem('savedUserID');
+    const [teammates, setTeammates] = useState(); 
+    const userId = Number(sessionStorage.getItem('savedUserID'));
     const [addForm, setAddForm] = useState({
         name : "",
         description : "", 
@@ -11,7 +11,7 @@ export default function Add({projectId, onAction}) {
     }); 
 
     useEffect(() => {
-        fetch(`/api/Teams/AssignableTeammates/ByUser/ForDisplay/${userId}/${projectId}`)
+        fetch(`/api/Teams/AssignableTeammates/ByUserProject/ForDisplay/${userId}/${projectId}`)
             .then(response => response.json())
             .then(data => setTeammates(data)); 
     }, [])
@@ -47,6 +47,7 @@ export default function Add({projectId, onAction}) {
     }
 
     return (
+        (teammates)?       
         <div>
             <form onSubmit={handleAddForm}>
                 <input class='rounded-input' type="text" name="name" placeholder="task name" value={addForm.name} onChange={handleFormChange}/>
@@ -56,12 +57,14 @@ export default function Add({projectId, onAction}) {
                 <select class='rounded-select' value={addForm.assigneeName} name="assigneeName" onChange={handleFormChange}>
                     <option value="">Select Assignee</option> 
                     {teammates.map(teammate => 
-                        <option key={teammate.id} value={teammate.userName.toString()}>{teammate.userName}</option>
+                        <option key={teammate} value={teammate.toString()}>{teammate}</option>
                     )}    
                 </select>
                 
                 <button class='rounded-button' type="submit">Add Task</button>
             </form>
         </div>
+        :
+        <p>{"Sorry, I messed up the loading :( text me @rubidiumoxide"}</p>    
     )
 }
