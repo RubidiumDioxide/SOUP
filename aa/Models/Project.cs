@@ -14,11 +14,15 @@ public partial class Project
 
     public int Creator { get; set; }
 
+    public int? Repository { get; set; }
+
     public virtual ICollection<Action> Actions { get; set; } = new List<Action>();
 
     public virtual User CreatorNavigation { get; set; } = null!;
 
     public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
+
+    public virtual Repository? RepositoryNavigation { get; set; }
 
     public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
 

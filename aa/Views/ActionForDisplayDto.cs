@@ -12,6 +12,7 @@ namespace aa.Views
         public int TaskId { get; set; }
         public string TaskName { get; set; } 
         public string Description { get; set; } = null!;
+        public string? Commit { get; set; }
         public DateTime Date { get; set; }
 
         public ActionForDisplayDto(aa.Models.Action a, string projectName, string actorName, string taskName)
@@ -24,10 +25,11 @@ namespace aa.Views
             TaskId = a.TaskId;
             TaskName = taskName;
             Description = a.Description;
+            Commit = a.Commit; 
             Date = a.Date;
         }
 
-        public ActionForDisplayDto(int id, int projectId, string projectName, int actorId, string actorName, int taskId, string taskName, string description, DateTime date)
+        public ActionForDisplayDto(int id, int projectId, string projectName, int actorId, string actorName, int taskId, string taskName, string description, string commit, DateTime date)
         {
             Id = id;
             ProjectId = projectId;
@@ -37,6 +39,7 @@ namespace aa.Views
             TaskId = taskId;
             TaskName = taskName;
             Description = description;
+            Commit = commit; 
             Date = date;
         }
 

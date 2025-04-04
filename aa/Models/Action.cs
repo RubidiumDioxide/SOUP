@@ -15,6 +15,8 @@ public partial class Action
 
     public string Description { get; set; } = null!;
 
+    public string? Commit { get; set; }
+
     public DateTime Date { get; set; }
 
     public virtual User Actor { get; set; } = null!;

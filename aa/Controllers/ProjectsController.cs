@@ -86,9 +86,7 @@ namespace aa.Controllers
             var project = await context.Projects.FindAsync(id);
 
             if (project == null)
-            {
                 return NotFound();
-            }
 
             return new ProjectDto(project);
         }
@@ -100,16 +98,12 @@ namespace aa.Controllers
             var project = await context.Projects.FindAsync(id);
 
             if (project == null)
-            {
                 return NotFound();
-            }
 
             var creator = await context.Users.FindAsync(project.Creator);
             
             if (creator == null)
-            {
                 return NotFound();
-            }
             
             return new ProjectForDisplayDto(project, creator.Name);
         }
@@ -152,7 +146,8 @@ namespace aa.Controllers
             {
                 Name = projectdto.Name,
                 Description = projectdto.Description,
-                Creator = projectdto.Creator
+                Creator = projectdto.Creator, 
+                Repository = projectdto.Repository 
             };
 
             context.Projects.Add(project);
@@ -168,30 +163,14 @@ namespace aa.Controllers
                 Role = "Руководитель проекта",
                 Level = 0,
             };
-            
-            context.Teams.Add(team);
+
+            context.Teams.Add(team); 
 
             await context.SaveChangesAsync();
             
             return NoContent();
         } 
 
-        //marked for deletion 
-        /*
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<ProjectDto>> DeleteProject(int id)
-        {
-            var project = await context.Projects.FindAsync(id); 
-            if(project == null)
-            {
-                return NotFound(); 
-            }
-
-            context.Projects.Remove(project);
-            await context.SaveChangesAsync();
-
-            return new ProjectDto(project); 
-        }*/ 
 
         private bool ProjectExists(int id)
         {

@@ -80,9 +80,7 @@ namespace aa.Controllers
             var action = await context.Actions.FindAsync(id);
 
             if (action == null)
-            {
                 return NotFound();
-            }
 
             return new ActionDto(action);
         }
@@ -92,27 +90,24 @@ namespace aa.Controllers
         public async Task<IActionResult> PutAction(int id, ActionDto actiondto)
         {
             if (id != actiondto.Id)
-            {
-                return BadRequest();
-            }
+                return BadRequest(); 
 
             var action = await context.Actions.FindAsync(id);
 
             if (action == null)
-            {
                 return BadRequest();
-            }
 
             action.ProjectId = actiondto.ProjectId; 
             action.ActorId = actiondto.ActorId; 
             action.TaskId = actiondto.TaskId; 
             action.Description = actiondto.Description; 
+            action.Commit = actiondto.Commit; 
             action.Date = actiondto.Date;
 
             try
             {
                 await context.SaveChangesAsync();
-            }
+            } 
             catch (DbUpdateConcurrencyException) when (!ActionExists(id))
             {
                 return NotFound();
@@ -137,6 +132,7 @@ namespace aa.Controllers
               ActorId = actiondto.ActorId, 
               TaskId = actiondto.TaskId, 
               Description = actiondto.Description, 
+              Commit = actiondto.Commit, 
               Date = DateTime.Now 
             };
 
@@ -154,9 +150,7 @@ namespace aa.Controllers
             var action = await context.Actions.FindAsync(id);
             
             if (action == null)
-            {
                 return NotFound();
-            }
 
             context.Actions.Remove(action);
             await context.SaveChangesAsync();
@@ -229,17 +223,14 @@ namespace aa.Controllers
             var action = await context.Actions.FindAsync(id);
 
             if (action == null)
-            {
                 return NotFound();
-            }
+
             var project = await context.Projects.FindAsync(action.ProjectId);
             var actor = await context.Users.FindAsync(action.ActorId);
             var task = await context.Tasks.FindAsync(action.TaskId);
 
             if (project == null || actor == null || task == null)
-            {
                 return NotFound();
-            }
 
             return new ActionForDisplayDto(action, project.Name, actor.Name, task.Name);
         }
