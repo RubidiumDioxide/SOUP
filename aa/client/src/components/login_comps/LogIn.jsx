@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import './Login.css';
-
 
 const uri = '/api/users'; 
 
@@ -21,7 +19,7 @@ export default function Login({changeAppState}) {
 
     function handleLogInForm(e){
         e.preventDefault(); 
-        console.log(uri + `/Find/${logInForm.name}`);
+
         fetch(uri + `/Find/${logInForm.name}`, {
             method: "GET", 
             headers: {

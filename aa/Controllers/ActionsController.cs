@@ -125,6 +125,13 @@ namespace aa.Controllers
         [HttpPost]
         public async Task<IActionResult> PostAction(ActionDto actiondto)
         {
+            var task = context.Tasks.Find(actiondto.TaskId);
+
+            if (task == null)
+                return BadRequest();
+            if (task.IsComplete == true)
+                return BadRequest(); 
+
             var action = new aa.Models.Action{ 
               ProjectId = actiondto.ProjectId, 
               ActorId = actiondto.ActorId, 

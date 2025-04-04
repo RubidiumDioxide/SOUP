@@ -33,10 +33,11 @@ export default function Edit({project, onAction}) {
     return (
         <div>
             <h4>Edit project name & description</h4>
+            
             <form onSubmit={handleEditForm}>
-                <input type="text" name="name" value={editForm.name} onChange={handleEditChange}/>
-                <input type="text" name="description" value={editForm.description} onChange={handleEditChange}/>
-                <button type="submit">Submit Changes</button>
+                <input class='rounded-input' type="text" name="name" value={editForm.name} onChange={handleEditChange}/>
+                <input class='rounded-input' type="text" name="description" value={editForm.description} onChange={handleEditChange}/>
+                <button class='rounded-button' type="submit">Submit Changes</button>
             </form>
         </div>
     )

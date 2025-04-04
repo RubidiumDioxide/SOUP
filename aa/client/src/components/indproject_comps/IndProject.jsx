@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react"; 
 import {Link} from "react-router-dom";
 
+import Edit from './Edit';
 import Request from "./Request"; 
 import TeamsTable from "../teams_comps/TeamsTable";
 import TasksTable from "../tasks_comps/TasksTable";
 import ActionsTable from "../actions_comps/ActionsTable";
-
-import './IndProject.css';
 
 
 export default function IndProject() { 

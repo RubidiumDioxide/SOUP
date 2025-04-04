@@ -5,41 +5,43 @@ Scaffold-DbContext "Server=WIN-4E7JKGBR3SV\SQLEXPRESS;Database=soup_DB;TrustServ
 
 
 to-do: 
-Add login 						DONE
-Add a starting page with login/signup options		DONE
-My profile with redact option 				DONE
-My projects (table only for now)			DONE
-Add login 						DONE 
-Add a starting page with login/signup options		DONE
-My profile with redact option 				DONE			
-My projects (table only for now)			DONE 
-add adding people to project team & assigning roles 	DONE
-	add notification system (separate tab, two actions - join or decline)  		DONE
-add redacting people's roles or evicting them		DONE
+Add login 														DONE
+Add a starting page with login/signup options										DONE
+My profile with redact option 												DONE
+My projects (table only for now)											DONE
+Add login 														DONE 
+Add a starting page with login/signup options										DONE
+My profile with redact option 												DONE			
+My projects (table only for now)											DONE 
+add adding people to project team & assigning roles 									DONE
+add notification system (separate tab, two actions - join or decline)  							DONE
+add redacting people's roles or evicting them										DONE
+add team page (a list of all people with links) 									WHY?
+rework projects components 												DONE 
+make it so that (projectid, userid, role) combination is unique (in db scheme) 						DONE 
+add an ability to send a request to be added to project's team 								DONE
+add adding tasks to project 												DONE 
+add taskdto & fordisplay												DONE
+add tasks tab that displays user's assigned tasks 									DONE
+add indtask page   	 												DONE 
+add actions sql table & controller											DONE
+add actions component and section to indproject page 									DONE
+add finishing a task(as an assignee), connected to an action 								DONE 				
+add action fordisplay dto and controller methids, upgrade jsx components to use them  					DONE
+change possible roles in database and in components  									DONE
+add new contoller method that gets people you can aasign tasks to depending on your & their position (according to A)  	DONE 
+fix edit in ind project 												DONE
+add check in post action (for task.isComplete) 										DONE
 
-add team page (a list of all people with links) 	WHY?
 
-
-rework projects components 				DONE 
-make it so that (projectid, userid, role) combination is unique (in db scheme) 		DONE 
-add an ability to send a request to be added to project's team 				DONE
-
-
-add adding tasks to project 				DONE 
-add taskdto & fordisplay				DONE
-add tasks tab that displays user's assigned tasks 	DONE
-add indtask page   	 				DONE 
-
-add actions sql table & controller			DONE
-add actions component and section to indproject page 	DONE
-
-add finishing a task(as an assignee), connected to an action 				DONE 				
-
-add action fordisplay dto and controller methids, upgrade jsx components to use them  		DONE
-change possible roles in database and in components  	DONE
-add new contoller method that gets people you can aasign tasks to depending on your & their position (according to A)  	SOMEWHAT, TESTED POORLY
 
 add repository field to project and github user page field to user, display them 
 hopefully add last action displaying at the project page (via webhooks) 
 
 speed up the signing in 
+
+make project.description not null 
+add select to invite & to change role 
+add that it logs in after signup automatically 
+make it so that finish and add action buttons are unavailible (reload) 
+add search features 

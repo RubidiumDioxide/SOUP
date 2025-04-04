@@ -208,12 +208,9 @@ namespace aa.Controllers
                 return NotFound(); 
             }
 
-            var project = await context.Projects.FindAsync(team.ProjectId);
-            var user = await context.Users.FindAsync(team.UserId);
-
-            if (project == null || user == null)
+            if(team.Level == 0)
             {
-                return NotFound();
+                return BadRequest(); 
             }
 
             team.Role = teamdto.Role;  //in case of changing role specifically; if there's any need to change all, rewrite method 

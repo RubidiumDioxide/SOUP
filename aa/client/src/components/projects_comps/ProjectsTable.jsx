@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Project from "./Project"; 
 import Add from "./Add"; 
-import Edit from "./Edit";
-
-import './Projects.css'
+import Search from './Search'; 
 
 
 export default function ProjetcsTable({type}) {
   const [projects, setProjects] = useState([]);
-  const [refreshCond, setRefreshCond] = useState([false]); 
-  const [isEditing, setIsEditing] = useState(false); 
+  const [refreshCond, setRefreshCond] = useState([false]);
+  const [searchCond, setSearchCond] = useState([false]); 
   const [isAdding, setIsAdding] = useState(false); 
-  const [capturedProject, setCapturedProject] = useState(null);
-
   const userId = sessionStorage.getItem("savedUserID");
+  const [searchForm, setSearchForm] = useState({
+    id : 0,
+    name : "", 
+    description : "", 
+    creator : 0, 
+    creatorName : ""
+  }); 
 
   var uri = (type=="my")?`/api/Projects/ForDisplay/Creators/${userId}`:'/api/Projects/ForDisplay'; 
 
@@ -24,25 +27,38 @@ export default function ProjetcsTable({type}) {
     setRefreshCond([false]); 
   }, refreshCond)
 
+  useEffect(()=>{
+    fetch('/api/Projects/Search/ForDisplay', { 
+      method: "POST",
+      headers: {
+          "Content-Type" : "application/json"
+      },
+      body: JSON.stringify(searchForm) 
+      })
+    .then(response => response.json())
+    .then(data => setProjects(data)); 
+    setSearchCond([false]); 
+  }, searchCond)
+
   function onAction(){
     setRefreshCond([true]); 
+  }
+
+  function onSearch(searchForm){
+    setSearchForm(searchForm); 
+    setSearchCond([true]);
   }
 
   function changeAddState(){
     setIsAdding(!isAdding); 
   }
 
-  function changeEditState(){
-    setIsEditing(!isEditing); 
-  }
-
-  function captureEdit(clickedTeam){ 
-    changeEditState(); 
-    setCapturedTeam(clickedTeam); 
-  }
-
   return (
     <>
+      <Search
+        onSearch={onSearch}
+      />
+
       {(type=="my")? 
       <>
         <button class='rounded-button' onClick={changeAddState}>

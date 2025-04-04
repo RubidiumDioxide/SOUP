@@ -66,6 +66,19 @@ namespace aa.Controllers
                 ).ToListAsync();
         }
 
+        // GET: api/Projects/Search/ForDisplay
+        [HttpPost("Search/ForDisplay")]
+        public async Task<ActionResult<IEnumerable<ProjectForDisplayDto>>> GetProjectsSearchForDisplay(ProjectForDisplayDto searchdto)
+        {
+            return await (from project in context.Projects
+                          join user in context.Users on project.Creator equals user.Id
+                          where project.Name.ToUpper().Contains(searchdto.Name.ToUpper()) 
+                                && project.Description.ToUpper().Contains(searchdto.Description.ToUpper()) 
+                                && user.Name.ToUpper().Contains(searchdto.CreatorName.ToUpper())
+                          select new ProjectForDisplayDto(project, user.Name))
+                           .ToListAsync();
+        }
+
         // GET: api/Projects/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProjectDto>> GetProject(int id)
@@ -101,6 +114,7 @@ namespace aa.Controllers
             return new ProjectForDisplayDto(project, creator.Name);
         }
 
+        // PUT 
         [HttpPut("{id}")]
         public async Task<ActionResult<ProjectDto>> PutProject(int id, ProjectDto projectdto)
         {
@@ -130,6 +144,7 @@ namespace aa.Controllers
             return new ProjectDto(project);
         }
 
+        // POST
         [HttpPost]
         public async Task<IActionResult> CreateProject(ProjectDto projectdto)
         {
@@ -177,7 +192,6 @@ namespace aa.Controllers
 
             return new ProjectDto(project); 
         }*/ 
-
 
         private bool ProjectExists(int id)
         {

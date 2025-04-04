@@ -669,6 +669,32 @@
     ]
   },
   {
+    "ContainingType": "aa.Controllers.ProjectsController",
+    "Method": "GetProjectsSearchForDisplay",
+    "RelativePath": "api/Projects/Search/ForDisplay",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchdto",
+        "Type": "aa.Views.ProjectForDisplayDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[aa.Views.ProjectForDisplayDto, aa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "aa.Controllers.TasksController",
     "Method": "GetTasks",
     "RelativePath": "api/Tasks",
