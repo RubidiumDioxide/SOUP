@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
+import { Link } from 'react-router-dom'; 
 import Project from "./Project"; 
-import Add from "./Add"; 
+//import Add from "./Add"; 
 import Search from './Search'; 
 
 
@@ -49,9 +50,9 @@ export default function ProjetcsTable({type}) {
     setSearchCond([true]);
   }
 
-  function changeAddState(){
+  /*function changeAddState(){
     setIsAdding(!isAdding); 
-  }
+  }*/
 
   return (
     <>
@@ -60,20 +61,12 @@ export default function ProjetcsTable({type}) {
       />
 
       {(type=="my")? 
-      <>
-        <button class='rounded-button' onClick={changeAddState}>
-          New Project
-        </button>
-
-        {isAdding?
-        (<Add 
-            onAction={onAction}
-          />) 
-          : 
-          null}
-      </> 
-      : 
-      null}
+      <button class='rounded-button'>
+        <Link to="/newproject">New Project</Link>
+      </button>
+      :
+      null
+      }
 
       {(projects.length == 0)? 
       <p>No projects yet</p>  

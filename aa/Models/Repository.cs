@@ -11,5 +11,5 @@ public partial class Repository
 
     public string GithubCreator { get; set; } = null!;
 
-    public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
+    public virtual Project IdNavigation { get; set; } = null!;
 }

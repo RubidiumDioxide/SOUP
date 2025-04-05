@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
-using aa.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http.Headers;
 using Microsoft.Net.Http.Headers;
 using System;
 using System.Dynamic;
 using System.Security.Cryptography;
+using aa.Models; 
 
 namespace aa
 {
@@ -23,7 +23,8 @@ namespace aa
             string connectionString = config.GetConnectionString("DefaultConnection");
 
             app_builder.Services.AddDbContext<SoupDbContext>(options => options.UseSqlServer(connectionString));
-            app_builder.Services.AddSpaStaticFiles(configuration => {
+            app_builder.Services.AddSpaStaticFiles(configuration =>
+            {
                 configuration.RootPath = "client/src";
             });
             //app_builder.Services.AddScoped<IUserService, UserService>();
@@ -72,7 +73,8 @@ namespace aa
                 app.Map(new PathString(spaPath), client =>
                 {
                     client.UseSpaStaticFiles();
-                    client.UseSpa(spa => {
+                    client.UseSpa(spa =>
+                    {
                         spa.Options.SourcePath = "client";
                         spa.Options.DefaultPageStaticFileOptions = new StaticFileOptions
                         {

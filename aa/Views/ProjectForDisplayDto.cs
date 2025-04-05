@@ -9,26 +9,23 @@ namespace aa.Views
         public string Description {  get; set; } 
         public int CreatorId {  get; set; }
         public string CreatorName { get; set; }
-        public int? Repository { get; set; }
 
         public ProjectForDisplayDto(Project p, string _creatorName)
         {
-            Id = p.Id; 
+            Id = p.Id;
             Name = p.Name;
-            Description = p.Description; 
+            Description = p.Description;
             CreatorId = p.Creator;
             CreatorName = _creatorName;
-            Repository = p.Repository; 
         }
 
-        public ProjectForDisplayDto(int _id, string _name, string _description, int _creator, string _creatorName, int _repository)
+        public ProjectForDisplayDto(int _id, string _name, string _description, int _creator, string _creatorName)
         {
             Id = _id;
             Name = _name;
             Description = _description; 
             CreatorId = _creator; 
             CreatorName= _creatorName;
-            Repository = _repository; 
         }
 
         public ProjectForDisplayDto() { }

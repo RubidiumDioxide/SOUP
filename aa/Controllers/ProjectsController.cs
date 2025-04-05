@@ -9,6 +9,8 @@ using aa.Models;
 using aa.Views;
 using Microsoft.VisualStudio.Web.CodeGeneration;
 using System.Linq.Expressions;
+using NuGet.Protocol.Core.Types;
+using Microsoft.CodeAnalysis;
 
 
 namespace aa.Controllers
@@ -72,8 +74,8 @@ namespace aa.Controllers
         {
             return await (from project in context.Projects
                           join user in context.Users on project.Creator equals user.Id
-                          where project.Name.ToUpper().Contains(searchdto.Name.ToUpper()) 
-                                && project.Description.ToUpper().Contains(searchdto.Description.ToUpper()) 
+                          where project.Name.ToUpper().Contains(searchdto.Name.ToUpper())
+                                && project.Description.ToUpper().Contains(searchdto.Description.ToUpper())
                                 && user.Name.ToUpper().Contains(searchdto.CreatorName.ToUpper())
                           select new ProjectForDisplayDto(project, user.Name))
                            .ToListAsync();
@@ -101,10 +103,10 @@ namespace aa.Controllers
                 return NotFound();
 
             var creator = await context.Users.FindAsync(project.Creator);
-            
+
             if (creator == null)
                 return NotFound();
-            
+
             return new ProjectForDisplayDto(project, creator.Name);
         }
 
@@ -118,13 +120,13 @@ namespace aa.Controllers
             }
 
             var project = await context.Projects.FindAsync(id);
-            if(project == null)
+            if (project == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
 
-            project.Name = projectdto.Name; 
-            project.Description = projectdto.Description; 
+            project.Name = projectdto.Name;
+            project.Description = projectdto.Description;
 
             try
             {
@@ -138,8 +140,9 @@ namespace aa.Controllers
             return new ProjectDto(project);
         }
 
+        // archived verwion in case I brek
         // POST
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> CreateProject(ProjectDto projectdto)
         {
             var project = new Project
@@ -169,7 +172,61 @@ namespace aa.Controllers
             await context.SaveChangesAsync();
             
             return NoContent();
-        } 
+        } */
+
+
+        // POST
+        [HttpPost]
+        public async Task<IActionResult> CreateProject(ProjectDto projectdto)
+        {
+            //creating project 
+            var project = new aa.Models.Project
+            {
+                Name = projectdto.Name,
+                Description = projectdto.Description,
+                Creator = projectdto.Creator
+            };
+
+            context.Projects.Add(project);
+
+            await context.SaveChangesAsync();
+
+            //creating team
+            project = context.Projects.FirstOrDefault(p => p.Name == projectdto.Name);
+
+            var team = new Team
+            {
+                UserId = project.Creator, //implies creatorid, ofc. i'm a dummy and messed up the dtos 
+                ProjectId = project.Id,
+                Role = "Руководитель проекта",
+                Level = 0,
+            };
+
+            context.Teams.Add(team);
+
+            await context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // POST
+        [HttpPost("AttachRepository/{projectId}")]
+        public async Task<IActionResult> AttachRepository(RepositoryDto repositorydto, int projectId)
+        {
+            //creating repository
+            var repository = new aa.Models.Repository
+            {
+                Id = projectId, 
+                GithubName = repositorydto.GithubName, 
+                GithubCreator = repositorydto.GithubCreator 
+            };
+
+            context.Repositories.Add(repository);
+
+            await context.SaveChangesAsync();
+
+            return NoContent();
+        }
 
 
         private bool ProjectExists(int id)

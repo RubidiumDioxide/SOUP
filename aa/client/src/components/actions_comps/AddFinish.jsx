@@ -3,7 +3,8 @@ import {React, useEffect, useState} from 'react'
 export default function AddFinish({projectId, taskId, onAction, type}) { 
     const userId = Number(sessionStorage.getItem('savedUserID'));   
     const [addForm, setAddForm] = useState({
-        description : "", 
+        description : '', 
+        commit : ''
     }); 
 
     useEffect(() => {
@@ -26,6 +27,16 @@ export default function AddFinish({projectId, taskId, onAction, type}) {
     function handleAddForm(e) {
         e.preventDefault();
 
+        console.log({
+            id : 0, 
+            projectId : projectId, 
+            actorId : userId, 
+            taskId : taskId, 
+            description : addForm.description, 
+            commit : addForm.commit, 
+            date : Date.now
+        })
+
        fetch(`/api/Actions`, {
             method : "POST", 
             headers : {
@@ -37,6 +48,7 @@ export default function AddFinish({projectId, taskId, onAction, type}) {
                 actorId : userId, 
                 taskId : taskId, 
                 description : addForm.description, 
+                commit : addForm.commit, 
                 date : Date.now
             })
         })
@@ -57,8 +69,11 @@ export default function AddFinish({projectId, taskId, onAction, type}) {
         <div>
             <form onSubmit={handleAddForm}>
                 <input class='rounded-input' type="text" name="description" placeholder="task description" value={addForm.description} onChange={handleFormChange}/>
+                <input class='rounded-input' type="text" name="commit" placeholder="gtihub commit" value={addForm.commit} onChange={handleFormChange}/>
                 
-                <button class='rounded-button' type="submit">{(type == 'add')?'Add Action':'Add Finishing Action'}</button>
+                <div class='app-div'>
+                    <button class='rounded-button' type="submit">{(type == 'add')?'Add Action':'Add Finishing Action'}</button>
+                </div>
             </form>
         </div>
     )

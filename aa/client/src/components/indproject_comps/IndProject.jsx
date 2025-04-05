@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 
 import Edit from './Edit';
 import Request from "./Request"; 
+import Attach from './Attach'; 
 import TeamsTable from "../teams_comps/TeamsTable";
 import TasksTable from "../tasks_comps/TasksTable";
 import ActionsTable from "../actions_comps/ActionsTable";
@@ -11,10 +12,12 @@ import ActionsTable from "../actions_comps/ActionsTable";
 export default function IndProject() { 
   const id = window.location.pathname.split('/')[3]; 
   const uri = `/api/projects/fordisplay/${id}`; 
-  const [project, setProject] = useState(null); // gets ProjectForDisplayDto!   
+  const [project, setProject] = useState(null); // gets ProjectForDisplayDto!
+  const [repository, setRepository] = useState(null);    
   const [refreshCond, setRefreshCond] = useState([true]);
   const [isEditing, setIsEditing] = useState(false); 
   const [isRequesting, setIsRequesting] = useState(false); 
+  const [isAttaching, setIsAttaching] = useState(false); 
   const [isCreator, setIsCreator] = useState(null);
   const [isInTeam, setIsInTeam] = useState(false); 
   const userID = Number(sessionStorage.getItem("savedUserID"));
@@ -39,6 +42,10 @@ export default function IndProject() {
           setIsInTeam(false); 
         }
       })
+    
+    fetch(`/api/repositories/${id}`) 
+      .then(response => response.json())
+      .then(data => setRepository(data))
   }, [])
 
   function onAction(){
@@ -51,6 +58,10 @@ export default function IndProject() {
 
   function changeRequestState(){
     setIsRequesting(!isRequesting); 
+  }
+
+  function changeAttachState(){
+    setIsAttaching(!isAttaching); 
   }
 
   return (
@@ -95,6 +106,37 @@ export default function IndProject() {
           </>
           :
           null}
+
+          {(isCreator || isInTeam)? 
+            <>
+            {repository?
+
+               <button class='github-rounded-button'>
+                  <img src="src/assets/github_icon.png" alt="GitHub Logo" width="24" height="24"></img>
+                  <Link to="#" onClick={() => window.location.href = `https://github.com/${repository.githubCreator}/${repository.githubName}`}>Go to project's Github repository</Link>
+               </button>
+              :
+              <>
+              {isCreator?
+                <>
+                <button class='rounded-button' onClick={changeAttachState}>Attach Repository</button>
+                {isAttaching?
+                  <Attach
+                    projectId={id}   
+                  />
+                  :
+                  null
+                } 
+                </>
+                :
+                null
+              }
+              </>
+            }
+            </>
+          :
+          null
+          }
 
           {(isCreator || isInTeam)? 
             <>

@@ -97,6 +97,7 @@ return (
           }
           <th>Description</th>
           <th>Actor</th>
+          <th>Github Commit</th>
           <th>Date&Time</th>
         </tr>
       </thead>

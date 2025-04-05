@@ -100,8 +100,8 @@ namespace aa.Controllers
             action.ProjectId = actiondto.ProjectId; 
             action.ActorId = actiondto.ActorId; 
             action.TaskId = actiondto.TaskId; 
-            action.Description = actiondto.Description; 
-            action.Commit = actiondto.Commit; 
+            action.Description = actiondto.Description;
+            action.Commit = (actiondto.Commit == "") ? null : actiondto.Commit; 
             action.Date = actiondto.Date;
 
             try
@@ -131,8 +131,8 @@ namespace aa.Controllers
               ProjectId = actiondto.ProjectId, 
               ActorId = actiondto.ActorId, 
               TaskId = actiondto.TaskId, 
-              Description = actiondto.Description, 
-              Commit = actiondto.Commit, 
+              Description = actiondto.Description,
+              Commit = (actiondto.Commit == "")?null:actiondto.Commit, 
               Date = DateTime.Now 
             };
 

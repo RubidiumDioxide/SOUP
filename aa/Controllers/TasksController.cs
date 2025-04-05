@@ -40,7 +40,6 @@ namespace aa.Controllers
                 .ToListAsync();
         }
 
-
         // GET: api/Tasks/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TaskDto>> GetTask(int id)
@@ -55,7 +54,22 @@ namespace aa.Controllers
             return new TaskDto(task); 
         }
 
-       
+        // GET: api/Tasks/Ratio/ByProject/5
+        [HttpGet("Ratio/ByProject/{projectId}")]
+        public async Task<ActionResult<double>> GetTasksRatioByProject(int projectId)
+        {
+            var done = await (from task in context.Tasks
+                              where task.ProjectId == projectId && task.IsComplete
+                              select task.Id).ToListAsync();
+
+            var all = await (from task in context.Tasks
+                             where task.ProjectId == projectId 
+                             select task.Id).ToListAsync();
+
+            return done.Count / all.Count; 
+        }
+
+
         // PUT: api/Tasks/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTask(int id, TaskDto taskdto)

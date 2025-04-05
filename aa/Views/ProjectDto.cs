@@ -8,7 +8,6 @@ namespace aa.Views
         public string Name { get; set; }
         public string Description {  get; set; } 
         public int Creator {  get; set; }
-        public int? Repository { get; set; }
 
         public ProjectDto(Project p)
         {
@@ -16,16 +15,14 @@ namespace aa.Views
             Name = p.Name;
             Description = p.Description; 
             Creator = p.Creator; 
-            Repository = p.Repository;
         }
 
-        public ProjectDto(int id, string name, string description, int creator, int repository)
+        public ProjectDto(int id, string name, string description, int creator)
         {
             Id = id;
             Name = name;
             Description = description; 
             Creator = creator; 
-            Repository = repository; 
         }
 
         public ProjectDto() { }

@@ -43,9 +43,10 @@ export default function IndTask() {
     setRefreshCond([true]);
   }
 
+  /*
   function changeEditState(){
     setIsEditing(!isEditing); 
-  }
+  }*/
 
   return (
       (task && (isCreator || isAssignee))?

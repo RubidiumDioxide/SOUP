@@ -572,6 +572,27 @@
   },
   {
     "ContainingType": "aa.Controllers.ProjectsController",
+    "Method": "AttachRepository",
+    "RelativePath": "api/Projects/AttachRepository/{projectId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "repositorydto",
+        "Type": "aa.Views.RepositoryDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "aa.Controllers.ProjectsController",
     "Method": "GetCreatorsProjects",
     "RelativePath": "api/Projects/Creators/{userId}",
     "HttpMethod": "GET",
@@ -693,6 +714,105 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "aa.Controllers.RepositoriesController",
+    "Method": "GetRepositories",
+    "RelativePath": "api/Repositories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[aa.Views.RepositoryDto, aa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "aa.Controllers.RepositoriesController",
+    "Method": "PostRepository",
+    "RelativePath": "api/Repositories",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "repositorydto",
+        "Type": "aa.Views.RepositoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "aa.Controllers.RepositoriesController",
+    "Method": "GetRepository",
+    "RelativePath": "api/Repositories/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "aa.Views.RepositoryDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "aa.Controllers.RepositoriesController",
+    "Method": "PutRepository",
+    "RelativePath": "api/Repositories/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "repositorydto",
+        "Type": "aa.Views.RepositoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "aa.Controllers.RepositoriesController",
+    "Method": "DeleteRepository",
+    "RelativePath": "api/Repositories/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "aa.Controllers.TasksController",
@@ -945,6 +1065,32 @@
     "ReturnTypes": [
       {
         "Type": "aa.Views.TaskForDisplayDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "aa.Controllers.TasksController",
+    "Method": "GetTasksRatioByProject",
+    "RelativePath": "api/Tasks/Ratio/ByProject/{projectId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Double",
         "MediaTypes": [
           "text/plain",
           "application/json",

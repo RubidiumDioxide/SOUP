@@ -222,3 +222,52 @@ tbody tr:last-child td {
   border-color: #d1d5da; 
 }
 
+.fancy-rounded-button {
+  background:  rgb(255, 187, 0);
+  color: #000000; 
+  border: none;
+  border-radius: 12px; 
+  padding: 16px 32px; 
+  margin: 12px 4px; 
+  font-size: 20px; 
+  cursor: pointer; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.1s, box-shadow 0.3s; 
+}
+
+.fancy-rounded-button:hover {
+  background:  rgb(255, 203, 61);  
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.fancy-rounded-button:active {
+  transform: scale(0.95); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.github-rounded-button {
+  background-color: #000000; /* Dark background */
+  color: rgb(255, 187, 0); /* Original text color */
+  border: none;
+  border-radius: 6px; 
+  padding: 8px 16px;
+  margin: 10px 2px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, transform 0.1s; 
+  display: flex; /* Flexbox to align items */
+  align-items: center; /* Vertically center the logo and text */
+}
+
+.github-rounded-button:hover {
+  background-color: #28a745; 
+} 
+
+.github-rounded-button:active {
+  transform: scale(0.95); 
+}
+
+.github-rounded-button img {
+  margin-right: 8px; /* Space between the logo and text */
+}

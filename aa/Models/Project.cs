@@ -10,11 +10,9 @@ public partial class Project
 
     public string Name { get; set; } = null!;
 
-    public string? Description { get; set; }
+    public string Description { get; set; } = null!;
 
     public int Creator { get; set; }
-
-    public int? Repository { get; set; }
 
     public virtual ICollection<Action> Actions { get; set; } = new List<Action>();
 
@@ -22,7 +20,7 @@ public partial class Project
 
     public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
 
-    public virtual Repository? RepositoryNavigation { get; set; }
+    public virtual Repository? Repository { get; set; }
 
     public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
 

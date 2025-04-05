@@ -8,7 +8,7 @@ CREATE TABLE [USER](
 )
 GO
 
-CREATE TRIGGER trg_PreventUserDelete
+/*CREATE TRIGGER trg_PreventUserDelete
 ON [USER]
 INSTEAD OF DELETE
 AS
@@ -16,24 +16,24 @@ BEGIN
     RAISERROR('Deletion from USER table is not allowed.', 16, 1);
     ROLLBACK TRANSACTION; 
 END;
-GO
-
-CREATE TABLE [REPOSITORY](
-	[ID] int IDENTITY PRIMARY KEY, 	
-	[GithubName] nvarchar(200) NOT NULL, 
-	[GithubCreator] nvarchar(200) NOT NULL 
-)
+GO*/
 
 CREATE TABLE [PROJECT](
 	[ID] int IDENTITY PRIMARY KEY, 
 	[Name] nvarchar(50) NOT NULL UNIQUE, 
-	[Description] nvarchar(200) NULL, 
-	[Creator] int FOREIGN KEY REFERENCES [USER]([ID]) ON DELETE NO ACTION NOT NULL, 
-	[Repository] integer FOREIGN KEY REFERENCES [REPOSITORY](ID) ON DELETE NO ACTION NULL 
+	[Description] nvarchar(200) NOT NULL, 
+	[Creator] int FOREIGN KEY REFERENCES [USER]([ID]) ON DELETE NO ACTION NOT NULL 
 ) 
 GO
 
-CREATE TRIGGER trg_PreventProjectDelete
+CREATE TABLE [REPOSITORY](
+	[ID] int PRIMARY KEY FOREIGN KEY REFERENCES [PROJECT]([ID]) NOT NULL, 
+	[GithubName] nvarchar(200) NOT NULL, 
+	[GithubCreator] nvarchar(200) NOT NULL 
+
+)
+
+/*CREATE TRIGGER trg_PreventProjectDelete
 ON [PROJECT]
 INSTEAD OF DELETE
 AS
@@ -41,7 +41,7 @@ BEGIN
     RAISERROR('Deletion from PROJECT table is not allowed.', 16, 1);
     ROLLBACK TRANSACTION; 
 END;
-GO
+GO*/ 
 
 
 CREATE TABLE [TEAM](
