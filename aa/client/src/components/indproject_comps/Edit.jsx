@@ -4,10 +4,10 @@ const uri = '/api/projects';
 
 export default function Edit({project, onAction}) {
   const [editForm, setEditForm] = useState({
-    id : project.id, 
     name : project.name, 
     description : project.description,   
-    creator : project.creator 
+    dateDeadline : project.dateDeadline, 
+    isPrivate : project.isPrivate 
   })
 
     function handleEditChange(e){
@@ -24,7 +24,17 @@ export default function Edit({project, onAction}) {
             headers: {
                 "Content-Type" : "application/json"
             },
-            body: JSON.stringify(editForm),
+            body: JSON.stringify({
+              id : project.id, 
+              name : editForm.name, 
+              description : editForm.description, 
+              creator : project.creator, 
+              isComplete : project.isComplete,  
+              dateBegan : project.dateBegan, 
+              dateFinished : project.dateFinished,  
+              dateDeadline : editForm.dateDeadline, 
+              isPrivate : editForm.isPrivate 
+            }),
         })
             .then(response => response.json())
             .then(onAction)
@@ -37,6 +47,9 @@ export default function Edit({project, onAction}) {
             <form onSubmit={handleEditForm}>
                 <input class='rounded-input' type="text" name="name" value={editForm.name} onChange={handleEditChange}/>
                 <input class='rounded-input' type="text" name="description" value={editForm.description} onChange={handleEditChange}/>
+                <input class='rounded-input' type="date" name="dateDeadline" value={editForm.dateDeadline} onChange={handleEditChange}/>
+                <input class='rounded-input' type="checkbox" name="isPrivate" value={editForm.isPrivate} onChange={handleEditChange}>isPeivate</input>
+
                 <button class='rounded-button' type="submit">Submit Changes</button>
             </form>
         </div>

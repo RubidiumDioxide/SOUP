@@ -35,17 +35,19 @@ namespace aa.Controllers
             return await context.Projects.Select(p => new ProjectDto(p)).ToListAsync();
         }
 
-        // GET: api/Projects/ForDisplay
-        [HttpGet("ForDisplay")]
+        // GET: api/Projects/ForDisplay/Public
+        [HttpGet("ForDisplay/Public")]
         public async Task<ActionResult<IEnumerable<ProjectForDisplayDto>>> GetProjectsForDisplay()
         {
-            return await context.Projects.Join(context.Users,
-                p => p.Creator,
-                u => u.Id,
-                (p, u) => new ProjectForDisplayDto(p, u.Name)
-                ).ToListAsync();
+            return await (from project in context.Projects
+                          where project.IsPrivate == false
+                          join user in context.Users
+                            on project.Creator equals user.Id
+                          select (new ProjectForDisplayDto(project, user.Name)))
+                          .ToListAsync();  
         }
 
+        /* MARKED FOR DELETION, OBSOLETE
         // GET: api/Projects/Creators/5
         [HttpGet("Creators/{userId}")]
         public async Task<ActionResult<IEnumerable<ProjectDto>>> GetCreatorsProjects(int userId)
@@ -54,8 +56,9 @@ namespace aa.Controllers
                 .Where(p => p.Creator == userId)
                 .Select(p => new ProjectDto(p))
                 .ToListAsync();
-        }
+        }*/
 
+        /* MARKED FOR DELETION, OBSOLETE
         // GET: api/Projects/ForDisplay/Creators/5
         [HttpGet("ForDisplay/Creators/{userId}")]
         public async Task<ActionResult<IEnumerable<ProjectForDisplayDto>>> GetProjectsForDisplayCreators(int userId)
@@ -66,7 +69,7 @@ namespace aa.Controllers
                     u => u.Id,
                     (p, u) => new ProjectForDisplayDto(p, u.Name)
                 ).ToListAsync();
-        }
+        }*/
 
         // GET: api/Projects/ForDisplay/Participants/5
         [HttpGet("ForDisplay/Participants/{userId}")]
@@ -84,16 +87,17 @@ namespace aa.Controllers
                           .ToListAsync();  
         }
 
-        // GET: api/Projects/Search/ForDisplay
+        // GET: api/Projects/Search/Public/ForDisplay
         [HttpPost("Search/ForDisplay")]
         public async Task<ActionResult<IEnumerable<ProjectForDisplayDto>>> GetProjectsSearchForDisplay(ProjectForDisplayDto searchdto)
         {
             return await (from project in context.Projects
+                          where project.IsPrivate == false
                           join user in context.Users on project.Creator equals user.Id
                           where project.Name.ToUpper().Contains(searchdto.Name.ToUpper())
                                 && project.Description.ToUpper().Contains(searchdto.Description.ToUpper())
                                 && user.Name.ToUpper().Contains(searchdto.CreatorName.ToUpper())
-                          select new ProjectForDisplayDto(project, user.Name))
+                          select new ProjectForDisplayDto(project, user.Name)) 
                            .ToListAsync();
         }
 
@@ -126,7 +130,8 @@ namespace aa.Controllers
             return new ProjectForDisplayDto(project, creator.Name);
         }
 
-        // PUT 
+
+        // PUT          -- changes name, description & satedeadline only  
         [HttpPut("{id}")]
         public async Task<ActionResult<ProjectDto>> PutProject(int id, ProjectDto projectdto)
         {
@@ -142,7 +147,9 @@ namespace aa.Controllers
             }
 
             project.Name = projectdto.Name;
-            project.Description = projectdto.Description;
+            project.Description = projectdto.Description; 
+            project.DateDeadline = projectdto.DateDeadline; 
+            project.IsPrivate = projectdto.IsPrivate; 
 
             try
             {
@@ -153,42 +160,39 @@ namespace aa.Controllers
                 return NotFound();
             }
 
-            return new ProjectDto(project);
+            return Ok(); 
         }
 
-        // archived verwion in case I brek
-        // POST
-        /*[HttpPost]
-        public async Task<IActionResult> CreateProject(ProjectDto projectdto)
+
+        // PUT          -- finishes project 
+        [HttpPut("Finish/{id}")]
+        public async Task<ActionResult<ProjectDto>> FinishProject(int id, ProjectDto projectdto)
         {
-            var project = new Project
+            if (id != projectdto.Id)
             {
-                Name = projectdto.Name,
-                Description = projectdto.Description,
-                Creator = projectdto.Creator, 
-                Repository = projectdto.Repository 
-            };
+                return BadRequest();
+            }
 
-            context.Projects.Add(project);
-
-            await context.SaveChangesAsync();
-
-            project = context.Projects.FirstOrDefault(p => p.Name == projectdto.Name); 
-
-            var team = new Team
+            var project = await context.Projects.FindAsync(id);
+            if (project == null)
             {
-                UserId = project.Creator, //implies creatorid, ofc. i'm a dummy and messed up the dtos 
-                ProjectId = project.Id,
-                Role = "Руководитель проекта",
-                Level = 0,
-            };
+                return NotFound();
+            }
 
-            context.Teams.Add(team); 
+            project.IsComplete = true; 
+            project.DateFinished = DateTime.Now; 
+         
+            try
+            {
+                await context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException) when (!ProjectExists(id))
+            {
+                return NotFound();
+            }
 
-            await context.SaveChangesAsync();
-            
-            return NoContent();
-        } */
+            return Ok(); 
+        }
 
 
         // POST
@@ -200,7 +204,10 @@ namespace aa.Controllers
             {
                 Name = projectdto.Name,
                 Description = projectdto.Description,
-                Creator = projectdto.Creator
+                Creator = projectdto.Creator, 
+                DateBegan = DateTime.Now, 
+                DateDeadline = projectdto.DateDeadline,   
+                IsPrivate = projectdto.IsPrivate 
             };
 
             context.Projects.Add(project);
@@ -222,7 +229,7 @@ namespace aa.Controllers
 
             await context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(); 
         }
 
         // POST

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Task from "./Task"; 
 import Add from "./Add"; 
 
-export default function TasksTable({isCreator, projectId, type}) {
+export default function TasksTable({isCreator, projectId, type, isProjectComplete}) {
   const [tasks, setTasks] = useState([]);
   const [refreshCond, setRefreshCond] = useState([false]);   
   const [isAdding, setIsAdding] = useState(false); 
@@ -44,7 +44,7 @@ export default function TasksTable({isCreator, projectId, type}) {
 
 return (
   <div>
-    {isInTeam? <div>
+    {(isInTeam && !isProjectComplete)? <div>
       <button class='rounded-button' onClick={changeAddState}>
         New task
       </button>

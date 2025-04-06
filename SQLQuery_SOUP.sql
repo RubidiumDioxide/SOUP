@@ -22,7 +22,12 @@ CREATE TABLE [PROJECT](
 	[ID] int IDENTITY PRIMARY KEY, 
 	[Name] nvarchar(50) NOT NULL UNIQUE, 
 	[Description] nvarchar(200) NOT NULL, 
-	[Creator] int FOREIGN KEY REFERENCES [USER]([ID]) ON DELETE NO ACTION NOT NULL 
+	[Creator] int FOREIGN KEY REFERENCES [USER]([ID]) ON DELETE NO ACTION NOT NULL,  
+	[IsComplete] bit NOT NULL DEFAULT 0,   
+	[DateBegan] datetime NOT NULL, 
+	[DateFinished] datetime NULL, 
+	[DateDeadline] datetime NULL,
+	[isPrivate] bit NOT NULL DEFAULT 0 
 ) 
 GO
 
@@ -30,7 +35,6 @@ CREATE TABLE [REPOSITORY](
 	[ID] int PRIMARY KEY FOREIGN KEY REFERENCES [PROJECT]([ID]) NOT NULL, 
 	[GithubName] nvarchar(200) NOT NULL, 
 	[GithubCreator] nvarchar(200) NOT NULL 
-
 )
 
 /*CREATE TRIGGER trg_PreventProjectDelete

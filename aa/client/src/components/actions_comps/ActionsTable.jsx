@@ -5,7 +5,7 @@ import AddFinish from "./AddFinish";
 //import Finish from "./Finish"; 
 
 
-export default function ActionsTable({projectId, taskId, actorId, isTaskComplete, type, onAction, refreshCond}) {
+export default function ActionsTable({projectId, taskId, actorId, isTaskComplete, type, onAction, refreshCond, isProjectComplete}) {
   const [actions, setActions] = useState([]);  
   const [isAdding, setIsAdding] = useState(false); 
   const [isFinishing, setIsFinishing] = useState(false);  
@@ -52,7 +52,7 @@ export default function ActionsTable({projectId, taskId, actorId, isTaskComplete
 return (
   <div>
     {(type == 'bytask')?
-      (!isTaskComplete)? 
+      (!isTaskComplete && !isProjectComplete)? 
         <>
           <button class='rounded-button'onClick={changeFinishing}> 
             Finish Task              

@@ -3,14 +3,14 @@ import Delete from './Delete';
 import {Link} from 'react-router-dom'; 
 
 // deconstructed props
-export default function Team({team, team:{id, userId, userName, projectId, projectName, role, level}, onAction, captureEdit, isCreator}) {
+export default function Team({team, team:{id, userId, userName, projectId, projectName, role, level}, onAction, captureEdit, isCreator, isProjectComplete}) {
   return (
     <tr key={id}>
       <td>
         <Link to={`/user/${userId}`}>{userName}</Link>
       </td>
       <td>{role}</td>
-      {isCreator?
+      {(isCreator && !isProjectComplete)?
       <>
         <td>
          <Delete

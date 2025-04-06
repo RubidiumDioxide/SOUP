@@ -3,7 +3,7 @@ import Team from "./Team";
 import Add from "./Invite"; 
 import ChangeRole from "./ChangeRole";
 
-export default function TeamsTable({isCreator, projectId}) {
+export default function TeamsTable({isCreator, projectId, isProjectComplete}) {
   const [teams, setTeams] = useState([]);
   const [refreshCond, setRefreshCond] = useState([false]);  
   const [isEditing, setIsEditing] = useState(false); 
@@ -38,7 +38,8 @@ export default function TeamsTable({isCreator, projectId}) {
 
 return (
   <div>
-    {isCreator? <div>
+    {(isCreator && !isProjectComplete)? 
+    <div>
       <button class='rounded-button' onClick={changeAddState}>
         Invite
       </button>
@@ -56,7 +57,9 @@ return (
           onAction={onAction}
         />)
       : null}
-    </div> : null}
+    </div> 
+    : 
+    null}
 
 
     {(teams.length == 0)? 
@@ -77,6 +80,7 @@ return (
             onAction={onAction}
             captureEdit={captureEdit}
             isCreator={isCreator}
+            isProjectComplete={isProjectComplete}
           />)}
       </tbody>
     </table>

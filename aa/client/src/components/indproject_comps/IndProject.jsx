@@ -102,7 +102,7 @@ export default function IndProject() {
             null
           }
         
-          {(!isCreator)?
+          {(!isCreator && !project.isComplete)?
           <>
             <button class='rounded-button' onClick={changeRequestState}>
               Request
@@ -156,6 +156,7 @@ export default function IndProject() {
               <TeamsTable
                 isCreator={isCreator}
                 projectId={project.id}
+                isProjectComplete={project.isComplete}
               /> 
 
               <h4>Tasks</h4>
@@ -163,6 +164,7 @@ export default function IndProject() {
                 isCreator={isCreator}
                 projectId={project.id}
                 type="byproject" 
+                isProjectComplete={project.isComplete}
               />
 
               <h4>Actions</h4>
@@ -173,6 +175,7 @@ export default function IndProject() {
                 isTaskComplete={null}
                 type="byproject"
                 onAction={onAction}
+                isProjectComplete={project.isComplete}
               />
             </>
             :

@@ -3,10 +3,10 @@ import {React, useState} from 'react'
 
 export default function Add({ onAction }) {
     const [addForm, setAddForm] = useState({
-        id : 0, 
         name : "", 
         description : "", 
-        creator: sessionStorage.getItem("savedUserID") 
+        isPrivate: false, 
+        dateDeadline : "", 
     }); 
     
     function handleFormChange(e){
@@ -24,7 +24,17 @@ export default function Add({ onAction }) {
             headers: {
                 "Content-Type" : "application/json"
             },
-            body: JSON.stringify(addForm) 
+            body: JSON.stringify({
+                id : 0, 
+                name : addForm.name, 
+                description : addForm.description, 
+                creator : sessionStorage.getItem("savedUserID"), 
+                isComplete : false,  
+                dateBegan : "", 
+                dateFinished : "",  
+                dateDeadline : addForm.dateDeadline, 
+                isPrivate : addForm.isPrivate 
+            }) 
         })
             .then(onAction)
     }

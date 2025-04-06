@@ -77,6 +77,10 @@ export default function ProjetcsTable({type}) {
             <th>Name</th>
             <th>Description</th>
             <th>Creator</th>
+            <th>Status</th>
+            <th>Date began</th>
+            <th>Date finished</th>
+            <th>Deadline</th>
           </tr>
         </thead>
         <tbody>

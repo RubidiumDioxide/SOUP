@@ -14,6 +14,16 @@ public partial class Project
 
     public int Creator { get; set; }
 
+    public bool IsComplete { get; set; }
+
+    public DateTime DateBegan { get; set; }
+
+    public DateTime? DateFinished { get; set; }
+
+    public DateTime? DateDeadline { get; set; }
+
+    public bool IsPrivate { get; set; }
+
     public virtual ICollection<Action> Actions { get; set; } = new List<Action>();
 
     public virtual User CreatorNavigation { get; set; } = null!;
