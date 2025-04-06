@@ -45,4 +45,4 @@ add that it logs in after signup automatically
 make it so that finish and add action buttons are unavailible (reload) 							HOPEFULLY DONE
 add search features 													SOMEWHAT 
 
-make it so that myprojects page displays projects you're part of (not necessarily creator)
+make it so that myprojects page displays projects you're part of (not necessarily creator)				DONE
