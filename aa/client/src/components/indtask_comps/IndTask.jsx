@@ -7,46 +7,30 @@ export default function IndTask() {
   const id = window.location.pathname.split('/')[3]; 
   const [task, setTask] = useState(null); 
   const [refreshCond, setRefreshCond] = useState([true]);
-  const [isEditing, setIsEditing] = useState(false); 
   const [isCreator, setIsCreator] = useState(null); 
   const [isAssignee, setIsAssignee] = useState(null); 
   const [isInTeam, setIsInTeam] = useState(false); 
   const userId = Number(sessionStorage.getItem("savedUserID"));
+  const [isTaskComplete, setIsTaskComplete] = useState(false); 
 
   useEffect(()=>{
     //get task
+
     fetch(`/api/tasks/fordisplay/${id}`)
       .then(response => response.json())
-      .then(t => setTask(t)); 
-
-    //get isCreator && isAssignee 
-    fetch(`/api/tasks/${id}`)
-      .then(response => response.json())
       .then(t => {
+        setTask(t); 
         setIsCreator(t.creatorId == userId); 
-        setIsAssignee(t.assigneeId == userId)
-    }); 
+        setIsAssignee(t.assigneeId == userId); 
+        setIsTaskComplete(t.isComplete); 
+      }); 
 
-    //for now, only the assignee and the creator of the task can see it. may change so that everyone in team can see it
-    /*fetch(`/api/users/isinteam/${Number(sessionStorage.getItem("savedUserID"))}/${id}`)
-      .then(response => { 
-        if(response.ok){
-          setIsInTeam(true); 
-        }
-        else{
-          setIsInTeam(false); 
-        }
-      })*/
-  }, []) 
+    setRefreshCond([false]); 
+  }, refreshCond) 
 
   function onAction(){
     setRefreshCond([true]);
   }
-
-  /*
-  function changeEditState(){
-    setIsEditing(!isEditing); 
-  }*/
 
   return (
       (task && (isCreator || isAssignee))?
@@ -66,9 +50,10 @@ export default function IndTask() {
               projectId={task.projectId}
               taskId={task.id}
               actorId={null}
-              isTaskComplete={task.isComplete}
+              isTaskComplete={isTaskComplete}
               type="bytask"
               onAction={onAction}
+              refreshCond={refreshCond}
           />
         </div>
       :  

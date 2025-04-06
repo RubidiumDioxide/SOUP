@@ -34,14 +34,15 @@ fix edit in ind project 												DONE
 add check in post action (for task.isComplete) 										DONE
 
 
-
-add repository field to project and github user page field to user, display them 
+add repository field to project and github user page field to user, display them 					DONE
 hopefully add last action displaying at the project page (via webhooks) 
 
 speed up the signing in 
 
-make project.description not null 
-add select to invite & to change role 
+make project.description not null 											DONE
+add select to invite & to change role 											DONE
 add that it logs in after signup automatically 
-make it so that finish and add action buttons are unavailible (reload) 
-add search features 
+make it so that finish and add action buttons are unavailible (reload) 							HOPEFULLY DONE
+add search features 													SOMEWHAT 
+
+make it so that myprojects page displays projects you're part of (not necessarily creator)

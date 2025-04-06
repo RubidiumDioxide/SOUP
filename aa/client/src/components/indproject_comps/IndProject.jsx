@@ -43,9 +43,22 @@ export default function IndProject() {
         }
       })
     
-    fetch(`/api/repositories/${id}`) 
-      .then(response => response.json())
-      .then(data => setRepository(data))
+      fetch(`/api/repositories/${id}`) 
+      .then(response => {
+        if (response.status === 404) {
+          console.error('Repository not found.');
+          return null; 
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data !== null) {
+          setRepository(data); 
+        }
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+      });
   }, [])
 
   function onAction(){
@@ -109,8 +122,7 @@ export default function IndProject() {
 
           {(isCreator || isInTeam)? 
             <>
-            {repository?
-
+            {(repository != null && repository != undefined)?
                <button class='github-rounded-button'>
                   <img src="src/assets/github_icon.png" alt="GitHub Logo" width="24" height="24"></img>
                   <Link to="#" onClick={() => window.location.href = `https://github.com/${repository.githubCreator}/${repository.githubName}`}>Go to project's Github repository</Link>

@@ -5,12 +5,10 @@ import AddFinish from "./AddFinish";
 //import Finish from "./Finish"; 
 
 
-export default function ActionsTable({projectId, taskId, actorId, isTaskComplete, type, onAction}) {
-  const [actions, setActions] = useState([]);
-  const [refreshCond, setRefreshCond] = useState([false]);   
+export default function ActionsTable({projectId, taskId, actorId, isTaskComplete, type, onAction, refreshCond}) {
+  const [actions, setActions] = useState([]);  
   const [isAdding, setIsAdding] = useState(false); 
-  const [isFinishing, setIsFinishing] = useState(false); 
-
+  const [isFinishing, setIsFinishing] = useState(false);  
 
   var uri
   if(type=="byproject"){
@@ -25,14 +23,15 @@ export default function ActionsTable({projectId, taskId, actorId, isTaskComplete
 
   useEffect(()=>{
     fetch(uri)
-    .then(response => response.json())
-    .then(data => setActions(data)); 
-    setRefreshCond([false]); 
-  }, refreshCond)
+      .then(response => response.json())
+      .then(data => setActions(data)); 
+  }, [isTaskComplete])
 
-  function onAction(){
-    setRefreshCond([true]); 
-  }
+  useEffect(()=>{
+    fetch(uri)
+      .then(response => response.json())
+      .then(data => setActions(data));  
+  }, [refreshCond])
 
   function changeAdding(){
     if(isFinishing){

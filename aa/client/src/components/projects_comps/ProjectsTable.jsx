@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from "react";
 import { Link } from 'react-router-dom'; 
 import Project from "./Project"; 
-//import Add from "./Add"; 
 import Search from './Search'; 
 
 
@@ -9,7 +8,6 @@ export default function ProjetcsTable({type}) {
   const [projects, setProjects] = useState([]);
   const [refreshCond, setRefreshCond] = useState([false]);
   const [searchCond, setSearchCond] = useState([false]); 
-  const [isAdding, setIsAdding] = useState(false); 
   const userId = sessionStorage.getItem("savedUserID");
   const [searchForm, setSearchForm] = useState({
     id : 0,
@@ -19,7 +17,7 @@ export default function ProjetcsTable({type}) {
     creatorName : ""
   }); 
 
-  var uri = (type=="my")?`/api/Projects/ForDisplay/Creators/${userId}`:'/api/Projects/ForDisplay'; 
+  var uri = (type=="my")?`/api/Projects/ForDisplay/Participants/${userId}`:'/api/Projects/ForDisplay'; 
 
   useEffect(()=>{
     fetch(uri)
@@ -27,19 +25,21 @@ export default function ProjetcsTable({type}) {
     .then(data => setProjects(data)); 
     setRefreshCond([false]); 
   }, refreshCond)
-
-  useEffect(()=>{
-    fetch('/api/Projects/Search/ForDisplay', { 
-      method: "POST",
-      headers: {
-          "Content-Type" : "application/json"
-      },
-      body: JSON.stringify(searchForm) 
-      })
-    .then(response => response.json())
-    .then(data => setProjects(data)); 
-    setSearchCond([false]); 
-  }, searchCond)
+  
+  if(type == "all"){
+    useEffect(()=>{
+      fetch('/api/Projects/Search/ForDisplay', { 
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(searchForm) 
+        })
+      .then(response => response.json())
+      .then(data => setProjects(data)); 
+      setSearchCond([false]); 
+    }, searchCond)
+  }
 
   function onAction(){
     setRefreshCond([true]); 
@@ -50,15 +50,15 @@ export default function ProjetcsTable({type}) {
     setSearchCond([true]);
   }
 
-  /*function changeAddState(){
-    setIsAdding(!isAdding); 
-  }*/
-
   return (
     <>
-      <Search
-        onSearch={onSearch}
-      />
+      {(type == "all")?
+        <Search
+          onSearch={onSearch}
+        />
+        :
+        null
+      }
 
       {(type=="my")? 
       <button class='rounded-button'>

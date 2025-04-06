@@ -68,6 +68,22 @@ namespace aa.Controllers
                 ).ToListAsync();
         }
 
+        // GET: api/Projects/ForDisplay/Participants/5
+        [HttpGet("ForDisplay/Participants/{userId}")]
+        public async Task<ActionResult<IEnumerable<ProjectForDisplayDto>>> GetProjectsForDisplayParticipants(int userId)
+        {
+            return await (from project in context.Projects
+                          join team in context.Teams
+                            on project.Id equals team.ProjectId
+                          where team.UserId == userId
+                          join user in context.Users
+                            on project.Creator equals user.Id
+                          select (new ProjectForDisplayDto(project, user.Name))
+                          )
+                          .Distinct() 
+                          .ToListAsync();  
+        }
+
         // GET: api/Projects/Search/ForDisplay
         [HttpPost("Search/ForDisplay")]
         public async Task<ActionResult<IEnumerable<ProjectForDisplayDto>>> GetProjectsSearchForDisplay(ProjectForDisplayDto searchdto)
