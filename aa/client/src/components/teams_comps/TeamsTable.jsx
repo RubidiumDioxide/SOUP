@@ -20,6 +20,12 @@ export default function TeamsTable({isCreator, projectId, isProjectComplete}) {
   }, refreshCond)
 
   function onAction(){
+    if(isAdding){
+      changeAddState(); 
+    }
+    if(isEditing){
+      changeEditState(); 
+    }
     setRefreshCond([true]); 
   }
 

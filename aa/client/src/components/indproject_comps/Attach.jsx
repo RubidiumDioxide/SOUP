@@ -1,6 +1,6 @@
 import {React, useState} from 'react'
 
-export default function Add({ projectId }) { 
+export default function Attach({ projectId, onAction }) { 
     const [attachForm, setAttachForm] = useState({
         githubName : '', 
         githubCreator : ''  
@@ -22,11 +22,12 @@ export default function Add({ projectId }) {
                 "Content-Type" : "application/json"
             },
             body: JSON.stringify({
-              id : 0,  
+              id : projectId,  
               githubName : attachForm.githubName, 
               githubCreator : attachForm.githubCreator 
             })                
         })
+        .then(onAction);
     }
 
     return (

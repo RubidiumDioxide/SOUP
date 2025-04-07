@@ -32,6 +32,7 @@ export default function Invite({projectId, onAction}) {
                 type : "invite" 
             })
         })
+        .then(onAction)
     }
 
     return (

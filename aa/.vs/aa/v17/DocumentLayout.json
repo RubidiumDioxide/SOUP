@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\views\\projectdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:views\\projectdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\views\\projectfordisplaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:views\\projectfordisplaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\controllers\\repositoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:controllers\\repositoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\views\\projectdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|solutionrelative:views\\projectdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6043BC3B-3343-4E95-B238-FCCECBADB9BA}|aa.csproj|c:\\users\\user\\storage\\courses\\\u043F\u0430\u043F\u0441\\soup\\aa\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,8 +33,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 146,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 126,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,32 +42,70 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProjectDto.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\ProjectDto.cs",
-              "RelativeDocumentMoniker": "Views\\ProjectDto.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\ProjectDto.cs",
-              "RelativeToolTip": "Views\\ProjectDto.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAgAAAAOAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "TeamsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\TeamsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TeamsController.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\TeamsController.cs",
+              "RelativeToolTip": "Controllers\\TeamsController.cs",
+              "ViewState": "AgIAAMQAAAAAAAAAAAA/wMgAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T12:18:59.539Z",
+              "WhenOpened": "2025-04-07T12:33:25.589Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProjectsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\ProjectsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProjectsController.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\ProjectsController.cs",
+              "RelativeToolTip": "Controllers\\ProjectsController.cs",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAIwNEAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T12:31:10.053Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "RepositoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\RepositoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RepositoriesController.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\RepositoriesController.cs",
+              "RelativeToolTip": "Controllers\\RepositoriesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T12:42:01.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ProjectForDisplayDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\ProjectForDisplayDto.cs",
               "RelativeDocumentMoniker": "Views\\ProjectForDisplayDto.cs",
               "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\ProjectForDisplayDto.cs",
               "RelativeToolTip": "Views\\ProjectForDisplayDto.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAwwDAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T12:19:00.299Z"
+              "WhenOpened": "2025-04-06T12:19:00.299Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
+              "Title": "ProjectDto.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\ProjectDto.cs",
+              "RelativeDocumentMoniker": "Views\\ProjectDto.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\ProjectDto.cs",
+              "RelativeToolTip": "Views\\ProjectDto.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T12:18:59.539Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Project.cs",
               "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Models\\Project.cs",
               "RelativeDocumentMoniker": "Models\\Project.cs",
@@ -68,25 +114,6 @@
               "ViewState": "AgIAAAoAAAAAAAAAAAAQwBgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T12:17:05.974Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 116,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProjectsController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\ProjectsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProjectsController.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\ProjectsController.cs",
-              "RelativeToolTip": "Controllers\\ProjectsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAALIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T12:31:10.053Z",
-              "EditorCaption": ""
             }
           ]
         }

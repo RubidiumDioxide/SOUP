@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import convertDateFormat from '../../Extensions/convertDateFormat'; 
+
 
 const uri = '/api/projects';
 
@@ -6,7 +8,7 @@ export default function Edit({project, onAction}) {
   const [editForm, setEditForm] = useState({
     name : project.name, 
     description : project.description,   
-    dateDeadline : project.dateDeadline, 
+    dateDeadline : convertDateFormat(project.dateDeadline), 
     isPrivate : project.isPrivate 
   })
 
@@ -19,7 +21,20 @@ export default function Edit({project, onAction}) {
 
     function handleEditForm(e) {
         e.preventDefault();
-        fetch(uri + `/${editForm.id}`, {
+ 
+      /*console.log({
+        id : project.id, 
+        name : editForm.name, 
+        description : editForm.description, 
+        creator : project.creator, 
+        isComplete : project.isComplete,  
+        dateBegan : project.dateBegan, 
+        dateFinished : project.dateFinished,  
+        dateDeadline : editForm.dateDeadline, 
+        isPrivate : editForm.isPrivate 
+      })*/
+        
+        fetch(uri + `/${project.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type" : "application/json"
@@ -29,14 +44,13 @@ export default function Edit({project, onAction}) {
               name : editForm.name, 
               description : editForm.description, 
               creator : project.creator, 
-              isComplete : project.isComplete,  
+              isComplete : Boolean(project.isComplete),  
               dateBegan : project.dateBegan, 
               dateFinished : project.dateFinished,  
               dateDeadline : editForm.dateDeadline, 
-              isPrivate : editForm.isPrivate 
+              isPrivate : Boolean(editForm.isPrivate) 
             }),
         })
-            .then(response => response.json())
             .then(onAction)
     }
 
@@ -48,7 +62,8 @@ export default function Edit({project, onAction}) {
                 <input class='rounded-input' type="text" name="name" value={editForm.name} onChange={handleEditChange}/>
                 <input class='rounded-input' type="text" name="description" value={editForm.description} onChange={handleEditChange}/>
                 <input class='rounded-input' type="date" name="dateDeadline" value={editForm.dateDeadline} onChange={handleEditChange}/>
-                <input class='rounded-input' type="checkbox" name="isPrivate" value={editForm.isPrivate} onChange={handleEditChange}>isPeivate</input>
+                Private
+                <input class='rounded-input' type="checkbox" name="isPrivate" value={editForm.isPrivate} onChange={handleEditChange}/>
 
                 <button class='rounded-button' type="submit">Submit Changes</button>
             </form>

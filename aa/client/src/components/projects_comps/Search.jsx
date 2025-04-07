@@ -6,7 +6,12 @@ export default function Search({ onSearch }) {
         name : "", 
         description : "", 
         creator : 0, 
-        creatorName : ""
+        creatorName : "", 
+        isComplete : false, 
+        dateBegan : "", 
+        dateFinished :"", 
+        dateDeadline : "", 
+        isPrivate : false    
       }); 
 
     function handleFormChange(e){

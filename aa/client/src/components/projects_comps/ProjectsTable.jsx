@@ -5,53 +5,67 @@ import Search from './Search';
 
 
 export default function ProjetcsTable({type}) {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState(null);
   const [refreshCond, setRefreshCond] = useState([false]);
-  const [searchCond, setSearchCond] = useState([false]); 
   const userId = sessionStorage.getItem("savedUserID");
-  const [searchForm, setSearchForm] = useState({
-    id : 0,
-    name : "", 
-    description : "", 
-    creator : 0, 
-    creatorName : ""
-  }); 
-
-  var uri = (type=="my")?`/api/Projects/ForDisplay/Participants/${userId}`:'/api/Projects/ForDisplay'; 
+  
+  var uri = (type=="my")?`/api/Projects/ForDisplay/Participants/${userId}`:'/api/Projects/ForDisplay/Public'; 
 
   useEffect(()=>{
     fetch(uri)
-    .then(response => response.json())
-    .then(data => setProjects(data)); 
+    .then(response => {
+      if (response.status === 404) {
+        console.error('Projects not found.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data != undefined && data != null) {
+        setProjects(data); 
+      }
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+    });
     setRefreshCond([false]); 
   }, refreshCond)
   
-  if(type == "all"){
-    useEffect(()=>{
-      fetch('/api/Projects/Search/ForDisplay', { 
-        method: "POST",
-        headers: {
-            "Content-Type" : "application/json"
-        },
-        body: JSON.stringify(searchForm) 
-        })
-      .then(response => response.json())
-      .then(data => setProjects(data)); 
-      setSearchCond([false]); 
-    }, searchCond)
-  }
+
 
   function onAction(){
     setRefreshCond([true]); 
   }
 
   function onSearch(searchForm){
-    setSearchForm(searchForm); 
-    setSearchCond([true]);
-  }
+     console.log(searchForm);
+
+        fetch('/api/Projects/Search/ForDisplay/Public', { 
+          method: "POST",
+          headers: {
+              "Content-Type" : "application/json"
+          },
+          body: JSON.stringify(searchForm) 
+          })
+          .then(response => {
+            if (response.status === 404) {
+              console.error('Projects not found.');
+            }
+            return response.json();
+          })
+          .then(data => {
+            if (data != undefined && data != null) {
+              setProjects(data); 
+            }
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+          });
+    } 
 
   return (
+    projects?
     <>
+    {console.log(projects)}
       {(type == "all")?
         <Search
           onSearch={onSearch}
@@ -93,5 +107,7 @@ export default function ProjetcsTable({type}) {
       </table>
     }
   </>
+  :
+  <p>{"Sorry, I messed up the loading :( text me @rubidiumoxide"}</p>  
   )
 }

@@ -44,4 +44,6 @@ hopefully add last action displaying at the project page (via webhooks)
 speed up the signing in
 make it so that it logs in after signup automatically 
 
-add iscomplete, date begin and date finish, date deadline to project (scheme and all)
+add iscomplete, date begin and date finish, date deadline, isprivate to project (scheme and all) 
+
+add a success message when adding something

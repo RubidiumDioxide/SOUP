@@ -16,8 +16,8 @@ export default defineConfig({
         strictPort: true,
         proxy: {
             '/api': {
-                //target: 'https://localhost:7218/',
-                target: 'https://192.168.172.122:5001/', 
+                target: 'https://localhost:5001/',
+                //target: 'https://192.168.228.121:5001/', 
                 changeOrigin: true, 
                 secure: false
                 //rewrite: (path) => path.replace(/^\/api/, '/api')

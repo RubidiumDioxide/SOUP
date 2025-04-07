@@ -50,7 +50,7 @@ export default function ActionsTable({projectId, taskId, actorId, isTaskComplete
   }
 
 return (
-  <div>
+  <div class='app-div'>
     {(type == 'bytask')?
       (!isTaskComplete && !isProjectComplete)? 
         <>

@@ -31,7 +31,6 @@ export default function ChangeRole({team, onAction}) {
             },
             body: JSON.stringify(editForm),
         })
-            .then(response => response.json())
             .then(onAction); 
     }
 

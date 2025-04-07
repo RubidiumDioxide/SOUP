@@ -593,41 +593,26 @@
   },
   {
     "ContainingType": "aa.Controllers.ProjectsController",
-    "Method": "GetCreatorsProjects",
-    "RelativePath": "api/Projects/Creators/{userId}",
-    "HttpMethod": "GET",
+    "Method": "FinishProject",
+    "RelativePath": "api/Projects/Finish/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
+        "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "projectdto",
+        "Type": "aa.Views.ProjectDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[aa.Views.ProjectDto, aa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "aa.Controllers.ProjectsController",
-    "Method": "GetProjectsForDisplay",
-    "RelativePath": "api/Projects/ForDisplay",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[aa.Views.ProjectForDisplayDto, aa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "aa.Views.ProjectDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -665,32 +650,6 @@
   },
   {
     "ContainingType": "aa.Controllers.ProjectsController",
-    "Method": "GetProjectsForDisplayCreators",
-    "RelativePath": "api/Projects/ForDisplay/Creators/{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[aa.Views.ProjectForDisplayDto, aa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "aa.Controllers.ProjectsController",
     "Method": "GetProjectsForDisplayParticipants",
     "RelativePath": "api/Projects/ForDisplay/Participants/{userId}",
     "HttpMethod": "GET",
@@ -717,8 +676,28 @@
   },
   {
     "ContainingType": "aa.Controllers.ProjectsController",
+    "Method": "GetProjectsForDisplay",
+    "RelativePath": "api/Projects/ForDisplay/Public",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[aa.Views.ProjectForDisplayDto, aa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "aa.Controllers.ProjectsController",
     "Method": "GetProjectsSearchForDisplay",
-    "RelativePath": "api/Projects/Search/ForDisplay",
+    "RelativePath": "api/Projects/Search/ForDisplay/Public",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

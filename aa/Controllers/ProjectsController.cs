@@ -87,8 +87,8 @@ namespace aa.Controllers
                           .ToListAsync();  
         }
 
-        // GET: api/Projects/Search/Public/ForDisplay
-        [HttpPost("Search/ForDisplay")]
+        // GET: api/Projects/Search/ForDisplay/Public
+        [HttpPost("Search/ForDisplay/Public")]
         public async Task<ActionResult<IEnumerable<ProjectForDisplayDto>>> GetProjectsSearchForDisplay(ProjectForDisplayDto searchdto)
         {
             return await (from project in context.Projects
@@ -148,7 +148,7 @@ namespace aa.Controllers
 
             project.Name = projectdto.Name;
             project.Description = projectdto.Description; 
-            project.DateDeadline = projectdto.DateDeadline; 
+            project.DateDeadline = DateTime.Parse(projectdto.DateDeadline); 
             project.IsPrivate = projectdto.IsPrivate; 
 
             try
@@ -206,7 +206,7 @@ namespace aa.Controllers
                 Description = projectdto.Description,
                 Creator = projectdto.Creator, 
                 DateBegan = DateTime.Now, 
-                DateDeadline = projectdto.DateDeadline,   
+                DateDeadline = (projectdto.DateDeadline == "")?null:DateTime.Parse(projectdto.DateDeadline),   
                 IsPrivate = projectdto.IsPrivate 
             };
 

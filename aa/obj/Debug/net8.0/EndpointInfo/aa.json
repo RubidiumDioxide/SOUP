@@ -928,108 +928,10 @@
         }
       }
     },
-    "/api/Projects/ForDisplay": {
+    "/api/Projects/ForDisplay/Public": {
       "get": {
         "tags": [
           "Projects"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProjectForDisplayDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProjectForDisplayDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProjectForDisplayDto"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Projects/Creators/{userId}": {
-      "get": {
-        "tags": [
-          "Projects"
-        ],
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProjectDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProjectDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProjectDto"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Projects/ForDisplay/Creators/{userId}": {
-      "get": {
-        "tags": [
-          "Projects"
-        ],
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -1113,7 +1015,7 @@
         }
       }
     },
-    "/api/Projects/Search/ForDisplay": {
+    "/api/Projects/Search/ForDisplay/Public": {
       "post": {
         "tags": [
           "Projects"
@@ -1300,6 +1202,65 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProjectForDisplayDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/Finish/{id}": {
+      "put": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDto"
                 }
               }
             }
@@ -2710,6 +2671,24 @@
           "creator": {
             "type": "integer",
             "format": "int32"
+          },
+          "isComplete": {
+            "type": "boolean"
+          },
+          "dateBegan": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateFinished": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateDeadline": {
+            "type": "string",
+            "nullable": true
+          },
+          "isPrivate": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -2736,6 +2715,24 @@
           "creatorName": {
             "type": "string",
             "nullable": true
+          },
+          "isComplete": {
+            "type": "boolean"
+          },
+          "dateBegan": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateFinished": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateDeadline": {
+            "type": "string",
+            "nullable": true
+          },
+          "isPrivate": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

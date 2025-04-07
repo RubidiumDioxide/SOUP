@@ -26,7 +26,9 @@ export default function IndProject() {
     fetch(uri)
       .then(response => response.json())
       .then(p => setProject(p))
-  }, []) 
+    
+    setRefreshCond([false]); 
+  }, refreshCond) 
 
   useEffect(() => {
     fetch(uri)
@@ -62,6 +64,13 @@ export default function IndProject() {
   }, [])
 
   function onAction(){
+    if(isEditing){
+      changeEditState(); 
+    }
+    if(isAttaching){
+      changeAttachState(); 
+    }    
+    console.log("ok"); 
     setRefreshCond([true]);
   }
 
@@ -134,7 +143,8 @@ export default function IndProject() {
                 <button class='rounded-button' onClick={changeAttachState}>Attach Repository</button>
                 {isAttaching?
                   <Attach
-                    projectId={id}   
+                    projectId={id} 
+                    onAction={onAction}
                   />
                   :
                   null

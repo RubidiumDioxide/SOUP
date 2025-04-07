@@ -1,10 +1,13 @@
 import {React, useState} from 'react'
+import { DatabaseDash } from 'react-bootstrap-icons';
 
 export default function Add({ onAction }) {
     const userId = Number(sessionStorage.getItem('savedUserID')); 
     const [addForm, setAddForm] = useState({
-        name : '', 
-        description : '', 
+        name : "", 
+        description : "", 
+        dateDeadline : "", 
+        isPrivate : false 
     }); 
     
     function handleFormChange(e){
@@ -19,6 +22,18 @@ export default function Add({ onAction }) {
 
         //tons of fetches (and by tons I mean one) 
 
+        console.log({
+          id : 0, 
+          name : addForm.name, 
+          description : addForm.description, 
+          isComplete : false, 
+          creator : userId, 
+          dateBegan : "", 
+          dateFinished : "",
+          dateDeadline : addForm.dateDeadline, 
+          isPrivate :  Boolean(addForm.isPrivate == "on")
+        }); 
+
         // POST fetch for project (and, consequently, team(creator))
         fetch(`/api/Projects/`, {
             method: "POST",
@@ -26,11 +41,15 @@ export default function Add({ onAction }) {
                 "Content-Type" : "application/json"
             },
             body: JSON.stringify({
-              Id : 0, 
-              Name : addForm.name, 
-              Description : addForm.description, 
-              Creator : userId, 
-              Repository : 0 
+              id : 0, 
+              name : addForm.name, 
+              description : addForm.description, 
+              isComplete : false, 
+              creator : userId, 
+              dateBegan : "", 
+              dateFinished : "",
+              dateDeadline : addForm.dateDeadline, 
+              isPrivate : Boolean(addForm.isPrivate == "on")
             })                
         })
     }
@@ -40,10 +59,13 @@ export default function Add({ onAction }) {
             <h1>Start a New Project!</h1>
             <form onSubmit={handleAddForm}>
                 { /* general */ }
-                
                 <div class='app-div'>
                   <input class='rounded-input' type="text" name="name" placeholder="project name" value={addForm.name} onChange={handleFormChange}/>
                   <input class='rounded-input' type="text" name="description" placeholder="project description" value={addForm.description} onChange={handleFormChange}/>
+                  Deadline
+                  <input class='rounded-input' type="date" name="dateDeadline" placeholder="deadline" value={addForm.deadLine} onChange={handleFormChange}/>
+                  Private
+                  <input class='rounded-input' type="checkbox" name="isPrivate" onChange={handleFormChange}/>
                 </div>
 
                 {/* submit for post */}

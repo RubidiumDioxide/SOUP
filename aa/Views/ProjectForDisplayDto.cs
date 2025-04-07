@@ -10,9 +10,9 @@ namespace aa.Views
         public int CreatorId {  get; set; }
         public string CreatorName { get; set; }
         public bool IsComplete { get; set; }
-        public DateTime DateBegan { get; set; }
-        public DateTime? DateFinished { get; set; }
-        public DateTime? DateDeadline { get; set; }
+        public string DateBegan { get; set; }
+        public string? DateFinished { get; set; }
+        public string? DateDeadline { get; set; }
         public bool IsPrivate { get; set; }
 
         public ProjectForDisplayDto(Project p, string _creatorName)
@@ -23,13 +23,13 @@ namespace aa.Views
             CreatorId = p.Creator;
             CreatorName = _creatorName;
             IsComplete = p.IsComplete;
-            DateBegan = p.DateBegan;
-            DateFinished = p.DateFinished;
-            DateDeadline = p.DateDeadline; 
+            DateBegan = p.DateBegan.ToString();
+            DateFinished = p.DateFinished.ToString();
+            DateDeadline = p.DateDeadline.ToString(); 
             IsPrivate = p.IsPrivate; 
         }
 
-        public ProjectForDisplayDto(int id, string name, string description, int creator, string creatorName, bool isComplete, DateTime dateBegan, DateTime dateFinished, DateTime dateDeadline, bool isPrivate)
+        public ProjectForDisplayDto(int id, string name, string description, int creator, string creatorName, bool isComplete, string dateBegan, string dateFinished, string dateDeadline, bool isPrivate)
         {
             Id = id;
             Name = name;

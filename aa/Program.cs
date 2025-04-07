@@ -6,10 +6,10 @@ using Microsoft.Net.Http.Headers;
 using System;
 using System.Dynamic;
 using System.Security.Cryptography;
-using aa.Models; 
+using aa.Models;
 using aa.Controllers;
 
-namespace aa.Models;
+namespace aa;
 
 public class Program
 {
