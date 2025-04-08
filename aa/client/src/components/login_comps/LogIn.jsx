@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import Alert from '@mui/material/Alert'; 
 
 const uri = '/api/users'; 
 
@@ -30,16 +30,21 @@ export default function Login({changeAppState}) {
                 if(response.ok){
                     response.json().then(user =>{
                         changeAppState("registered_user", user.id); 
+
                     })
                 }
                 else{
                     changeAppState("observer", null);   
+                    document.getElementById("alert").appendChild(<Alert variant="outlined" severity="error">
+                        This is an outlined error Alert.
+                      </Alert>); 
                 }
             })
     }
 
     return (
         <div>
+            <div id="alert"></div>
             <h4>Log In</h4>
             <form onSubmit={handleLogInForm}>
                 <div class='app-div'>

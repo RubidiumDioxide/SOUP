@@ -26,8 +26,28 @@ export default function SignUp({changeAppState}) {
             }, 
             body: JSON.stringify(signUpForm), 
         })
-            .then(response => response.json())
-            .then(changeAppState("registered_user"))
+        .then(response => {
+            if(response.ok){
+                fetch(uri + `/Find/${signUpForm.name}`, {
+                    method: "GET", 
+                    headers: {
+                        "Content-Type" : "application/json" 
+                    } 
+                })
+                    .then(response =>{
+                        if(response.ok){
+                            response.json().then(user =>{
+                                changeAppState("registered_user", user.id); 
+                                alert("successful signup");
+                            })
+                        }
+                        else{
+                            changeAppState("observer", null);
+                            alert("signup failed");
+                        }
+                    })      
+            }
+        })
     }
 
     return (

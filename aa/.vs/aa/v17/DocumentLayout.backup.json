@@ -34,24 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 126,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RepositoriesController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\RepositoriesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RepositoriesController.cs",
-              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\RepositoriesController.cs",
-              "RelativeToolTip": "Controllers\\RepositoriesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T12:42:01.088Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -80,6 +67,18 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RepositoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\RepositoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RepositoriesController.cs",
+              "ToolTip": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Controllers\\RepositoriesController.cs",
+              "RelativeToolTip": "Controllers\\RepositoriesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T12:42:01.088Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "ProjectForDisplayDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\storage\\courses\\\u043F\u0430\u043F\u0441\\SOUP\\aa\\Views\\ProjectForDisplayDto.cs",
@@ -88,8 +87,7 @@
               "RelativeToolTip": "Views\\ProjectForDisplayDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T12:19:00.299Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T12:19:00.299Z"
             },
             {
               "$type": "Document",
