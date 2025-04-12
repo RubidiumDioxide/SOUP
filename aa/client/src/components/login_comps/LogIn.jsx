@@ -34,9 +34,6 @@ export default function Login({changeAppState}) {
                 }
                 else{
                     changeAppState("observer", null);   
-                    document.getElementById("alert").appendChild(<Alert variant="outlined" severity="error">
-                        This is an outlined error Alert.
-                      </Alert>); 
                 }
             })
     }

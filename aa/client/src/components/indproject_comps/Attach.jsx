@@ -27,7 +27,18 @@ export default function Attach({ projectId, onAction }) {
               githubCreator : attachForm.githubCreator 
             })                
         })
+        .then(response => {
+          if(response.ok){
+            alert(`Репозиторий ${attachForm.githubName} был успешно привязан`); 
+            onAction(); 
+          }
+          else{
+            alert("Ошибка при привязке репозитория. Перепроверьте введенные данные")
+          }
+        })
         .then(onAction);
+
+
     }
 
     return (

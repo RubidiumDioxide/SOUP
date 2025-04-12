@@ -52,7 +52,15 @@ export default function AddFinish({projectId, taskId, onAction, type}) {
                 date : Date.now
             })
         })
-            .then(onAction)
+            .then(response => {
+                if(response.ok){
+                    alert(`Действие успешно добавлено`); 
+                    onAction(); 
+                }
+                else{
+                    alert("Ошибка при добавлении действия. Перепроверьте введенные данные")
+                }
+            })
 
         if(type == "finish"){
             fetch(`/api/Tasks/Complete/${taskId}`, {

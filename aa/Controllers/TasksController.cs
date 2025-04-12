@@ -256,7 +256,7 @@ namespace aa.Controllers
         public async Task<ActionResult<IEnumerable<TaskForDisplayDto>>> GetTasksByUserForDisplay(int assigneeId)
         {
             return await (from task in context.Tasks
-                          where task.AssigneeId == assigneeId
+                          where task.AssigneeId == assigneeId && task.IsComplete == false
                           join project in context.Projects on task.ProjectId equals project.Id
                           join creator in context.Users on task.CreatorId equals creator.Id
                           join assignee in context.Users on task.AssigneeId equals assignee.Id

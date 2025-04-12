@@ -43,7 +43,15 @@ export default function Add({projectId, onAction}) {
                 isComplete : false
             })
         })
-            .then(onAction)
+            .then(response => {
+                if(response.ok){
+                    alert(`Задача успешно добавлена`); 
+                    onAction(); 
+                }
+                else{
+                    alert("Ошибка при добавлении задачи. Перепроверьте введенные данные")
+                }
+            })
     }
 
     return (

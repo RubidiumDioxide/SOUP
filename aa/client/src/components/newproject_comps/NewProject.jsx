@@ -52,6 +52,14 @@ export default function Add({ onAction }) {
               isPrivate : Boolean(addForm.isPrivate == "on")
             })                
         })
+        .then(response => {
+          if(response.ok){
+            alert(`Проект ${addForm.name} был успешно создан`)
+          }
+          else{
+            alert("Ошибка при создании проекта. Перепроверьте введенные данные")
+          }
+        })
     }
 
     return (
@@ -60,8 +68,8 @@ export default function Add({ onAction }) {
             <form onSubmit={handleAddForm}>
                 { /* general */ }
                 <div class='app-div'>
-                  <input class='rounded-input' type="text" name="name" placeholder="project name" value={addForm.name} onChange={handleFormChange}/>
-                  <input class='rounded-input' type="text" name="description" placeholder="project description" value={addForm.description} onChange={handleFormChange}/>
+                  <input class='rounded-input' required type="text" name="name" placeholder="project name" value={addForm.name} onChange={handleFormChange}/>
+                  <input class='rounded-input' required type="text" name="description" placeholder="project description" value={addForm.description} onChange={handleFormChange}/>
                   Deadline
                   <input class='rounded-input' type="date" name="dateDeadline" placeholder="deadline" value={addForm.deadLine} onChange={handleFormChange}/>
                   Private
