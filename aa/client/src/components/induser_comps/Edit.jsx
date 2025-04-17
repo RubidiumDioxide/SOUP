@@ -32,11 +32,11 @@ export default function Edit({user, refresh}) {
 
     return (
         <div>
-            <h4>Edit project name & description</h4>
+            <h4>Редактировать имя пользователя</h4>
             <form onSubmit={handleEditForm}>
-                <input type="text" name="name" value={editForm.name} onChange={handleEditChange}/>
-                <input type="text" name="password" value={editForm.password} onChange={handleEditChange}/>
-                <button type="submit">Submit Changes</button>
+                <input className="rounded-input" type="text" name="name" value={editForm.name} onChange={handleEditChange}/>
+                <input className="rounded-input" type="text" name="password" value={editForm.password} onChange={handleEditChange}/>
+                <button className="rounded-button" type="submit">Сохранить</button>
             </form>
         </div>
     )

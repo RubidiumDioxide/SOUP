@@ -70,7 +70,7 @@ export default function IndProject() {
     if(isAttaching){
       changeAttachState(); 
     }    
-    console.log("ok"); 
+    
     setRefreshCond([true]);
   }
 
@@ -89,95 +89,102 @@ export default function IndProject() {
   return (
       (project)?
         //if project is loaded 
-        <div class='page'>
-          <h1>{project.name}</h1>
-          <p>A project started by 
-            <Link to={`/user/${project.creatorId}`}>{project.creatorName}</Link>
-          </p>
-          <h4>{project.description}</h4> 
+        <div className="app-div">
+          <div className="page-div">
+            <h1 align="center">{project.name}</h1>
+
+            <p align="center">{"Проект, начатый "}    
+              <Link to={`/user/${project.creatorId}`}>{project.creatorName}</Link>
+            </p>
           
-          {isCreator?
-            <>  
-              {(isEditing)? 
-                <Edit
-                  project={project}
-                  onAction={onAction}
-                /> : null}
-              <button class='rounded-button' onClick={changeEditState}>
-                Edit
+            <p>{project.description}</p> 
+
+            {isCreator?
+              <>  
+                {(isEditing)? 
+                  <Edit
+                    project={project}
+                    onAction={onAction}
+                  /> : null}
+                <button class='rounded-button' onClick={changeEditState}>
+                  Редактировать
+                </button>
+              </>
+              :
+              null
+            }
+          
+            {(!isCreator && !project.isComplete)?
+            <>
+              <button class='rounded-button' onClick={changeRequestState}>
+                Подать заявку на вступление
               </button>
+
+              {isRequesting?
+              <Request
+                project={project}
+                senderId={userID}  
+              />
+              :
+              null
+              } 
             </>
             :
-            null
-          }
-        
-          {(!isCreator && !project.isComplete)?
-          <>
-            <button class='rounded-button' onClick={changeRequestState}>
-              Request
-            </button>
+            null}
 
-            {isRequesting?
-            <Request
-              project={project}
-              senderId={userID}  
-            />
-            :
-            null
-            } 
-          </>
-          :
-          null}
-
-          {(isCreator || isInTeam)? 
-            <>
-            {(repository != null && repository != undefined)?
-               <button class='github-rounded-button'>
-                  <img src="src/assets/github_icon.png" alt="GitHub Logo" width="24" height="24"></img>
-                  <Link to="#" onClick={() => window.location.href = `https://github.com/${repository.githubCreator}/${repository.githubName}`}>Go to project's Github repository</Link>
-               </button>
-              :
+            {(isCreator || isInTeam)? 
               <>
-              {isCreator?
+              {(repository != null && repository != undefined)?
+                <button class='github-rounded-button'>
+                    <img src="src/assets/github_icon.png" alt="GitHub Logo" width="24" height="24"></img>
+                    <Link to="#" onClick={() => window.location.href = `https://github.com/${repository.githubCreator}/${repository.githubName}`}>Перейти к репозиторию проекта</Link>
+                </button>
+                :
                 <>
-                <button class='rounded-button' onClick={changeAttachState}>Attach Repository</button>
-                {isAttaching?
-                  <Attach
-                    projectId={id} 
-                    onAction={onAction}
-                  />
+                {isCreator?
+                  <>
+                  <button class='rounded-button' onClick={changeAttachState}>Привязать Github репозиторий</button>
+                  {isAttaching?
+                    <Attach
+                      projectId={id} 
+                      onAction={onAction}
+                    />
+                    :
+                    null
+                  } 
+                  </>
                   :
                   null
-                } 
+                }
                 </>
-                :
-                null
               }
               </>
+            :
+            null
             }
-            </>
-          :
-          null
-          }
+          </div>
 
           {(isCreator || isInTeam)? 
-            <>
-              <h4>Project's team</h4>
+          <>
+            <div className="page-div">
+              <h4 align="center">Команда проекта</h4>
               <TeamsTable
                 isCreator={isCreator}
                 projectId={project.id}
                 isProjectComplete={project.isComplete}
               /> 
-
-              <h4>Tasks</h4>
+            </div>
+            <div className="page-div">
+              <h4 align="center">Задачи</h4>
               <TasksTable
                 isCreator={isCreator}
                 projectId={project.id}
                 type="byproject" 
                 isProjectComplete={project.isComplete}
               />
-
-              <h4>Actions</h4>
+            </div>
+            <div className="page-div">
+              <h4 align="center">Действия</h4>
               <ActionsTable
                 projectId={project.id}
                 taskId={null}
@@ -187,9 +194,10 @@ export default function IndProject() {
                 onAction={onAction}
                 isProjectComplete={project.isComplete}
               />
+            </div>
             </>
             :
-            null        
+            null      
           }
 
         </div>

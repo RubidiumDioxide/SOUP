@@ -85,18 +85,18 @@ export default function Notification({notification, notification:{id, projectId,
       <p>
         {type=="invite"?
         <>
-          You were invited to participate in 
+          Вас пригласили в команду проекта
           <Link to={`/project/${projectId}`}> {project.name} </Link>
-          as a {role}!
+          на роль {role}!
         </>
         :
         null}
         {type=="request"?
         <>
           <Link to={`/user/${senderId}`}> {sender.name} </Link>  
-          sent a request to participate in your project  
+          хочет участвовать в вашем проекте 
           <Link to={`/project/${projectId}`}> {project.name} </Link>
-          as a {role}. 
+          как {role}. 
         </>
         :
         null}

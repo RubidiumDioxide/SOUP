@@ -58,9 +58,9 @@ export default function Add({projectId, onAction}) {
         (teammates)?       
         <div>
             <form onSubmit={handleAddForm}>
-                <input class='rounded-input' type="text" name="name" placeholder="task name" value={addForm.name} onChange={handleFormChange}/>
+                <input class='rounded-input' type="text" name="name" placeholder="название" value={addForm.name} onChange={handleFormChange}/>
 
-                <input class='rounded-input' type="text" name="description" placeholder="task description" value={addForm.description} onChange={handleFormChange}/>
+                <input class='rounded-input' type="text" name="description" placeholder="описание" value={addForm.description} onChange={handleFormChange}/>
 
                 <select class='rounded-select' value={addForm.assigneeName} name="assigneeName" onChange={handleFormChange}>
                     <option value="">Select Assignee</option> 

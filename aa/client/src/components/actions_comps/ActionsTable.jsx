@@ -55,11 +55,11 @@ return (
       (!isTaskComplete && !isProjectComplete)? 
         <>
           <button class='rounded-button'onClick={changeFinishing}> 
-            Finish Task              
+            Завершить задачу              
           </button>
 
           <button class='rounded-button' onClick={changeAdding}> 
-            Add Action to the Task           
+            Добавить действие
           </button>
             
           {(isAdding || isFinishing)?
@@ -79,7 +79,7 @@ return (
     }
 
     {(actions.length == 0)? 
-    <p>No actions yet</p>  
+    <p>Здесь пока нет действий</p>  
     : 
     <table>
       <thead>
@@ -94,10 +94,10 @@ return (
             :
             null
           }
-          <th>Description</th>
-          <th>Actor</th>
-          <th>Github Commit</th>
-          <th>Date&Time</th>
+          <th>Описание</th>
+          <th>Исполнитель</th>
+          <th>Github коммит</th>
+          <th>Дата и время</th>
         </tr>
       </thead>
       <tbody>

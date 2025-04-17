@@ -64,7 +64,7 @@ export default function ProjetcsTable({type}) {
 
   return (
     projects?
-    <>
+    <div className="app-div">
     {console.log(projects)}
       {(type == "all")?
         <Search
@@ -76,7 +76,7 @@ export default function ProjetcsTable({type}) {
 
       {(type=="my")? 
       <button class='rounded-button'>
-        <Link to="/newproject">New Project</Link>
+        <Link to="/newproject">Новый проект</Link>
       </button>
       :
       null
@@ -85,28 +85,15 @@ export default function ProjetcsTable({type}) {
       {(projects.length == 0)? 
       <p>No projects yet</p>  
       :
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Creator</th>
-            <th>Status</th>
-            <th>Date began</th>
-            <th>Date finished</th>
-            <th>Deadline</th>
-          </tr>
-        </thead>
-        <tbody>
-          {projects.map(project =>
-            <Project
-              key={project.id}
-              project={project}
-            />)}
-        </tbody>
-      </table>
-    }
-  </>
+      <div className="catalog">
+        {projects.map(project =>
+          <Project
+            key={project.id}
+            project={project}
+          />)}
+      </div>
+    } 
+  </div>
   :
   <p>{"Sorry, I messed up the loading :( text me @rubidiumoxide"}</p>  
   )

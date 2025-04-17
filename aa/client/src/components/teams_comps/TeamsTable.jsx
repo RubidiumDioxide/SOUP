@@ -43,7 +43,7 @@ export default function TeamsTable({isCreator, projectId, isProjectComplete}) {
   }
 
 return (
-  <div>
+  <div className="app-div">
     {(isCreator && !isProjectComplete)? 
     <div>
       <button class='rounded-button' onClick={changeAddState}>
@@ -74,8 +74,10 @@ return (
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Role</th>
+          <th>Имя</th>
+          <th>Роль</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>

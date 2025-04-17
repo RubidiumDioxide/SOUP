@@ -19,9 +19,9 @@ export default function NotificationsTable({userId}) {
   } 
 
 return (
-  <div>
+  <div className="app-div">
     {(notifications.length == 0)?
-    <p>No notifications yet</p>
+    <p>У вас нет уведомлений</p>
     :
     notifications.map(notification =>
       <Notification

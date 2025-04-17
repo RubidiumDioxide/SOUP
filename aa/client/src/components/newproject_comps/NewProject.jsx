@@ -63,22 +63,25 @@ export default function Add({ onAction }) {
     }
 
     return (
-        <div>
-            <h1>Start a New Project!</h1>
+        <div className="app-div">
+            <h1 className="glow">Начните новый проект!</h1>
             <form onSubmit={handleAddForm}>
                 { /* general */ }
                 <div class='app-div'>
-                  <input class='rounded-input' required type="text" name="name" placeholder="project name" value={addForm.name} onChange={handleFormChange}/>
-                  <input class='rounded-input' required type="text" name="description" placeholder="project description" value={addForm.description} onChange={handleFormChange}/>
+                  <input class='rounded-input' required type="text" name="name" placeholder="название проекта" value={addForm.name} onChange={handleFormChange}/>
+                  <input class='rounded-input' required type="text" name="description" placeholder="описание проекта" value={addForm.description} onChange={handleFormChange}/>
                   Deadline
-                  <input class='rounded-input' type="date" name="dateDeadline" placeholder="deadline" value={addForm.deadLine} onChange={handleFormChange}/>
-                  Private
-                  <input class='rounded-input' type="checkbox" name="isPrivate" onChange={handleFormChange}/>
+                  <input class='rounded-input' type="date" name="dateDeadline" placeholder="Дедлайн" value={addForm.deadLine} onChange={handleFormChange}/>
+   
+                  <label>
+                    {"Личный "} 
+                    <input type="checkbox" name="isPrivate" onChange={handleFormChange}/>
+                  </label>
                 </div>
 
                 {/* submit for post */}
-                <div lass='app-div'>
-                  <button class='fancy-rounded-button' type="submit">New Project</button>
+                <div className='app-div'>
+                  <button class='fancy-rounded-button' type="submit">Создать</button>
                 </div>
             </form>
         </div>

@@ -38,29 +38,34 @@ export default function SignUp({changeAppState}) {
                         if(response.ok){
                             response.json().then(user =>{
                                 changeAppState("registered_user", user.id); 
-                                alert("successful signup");
+                                alert(`Приятно познакомиться, ${user.name}`);
                             })
                         }
                         else{
                             changeAppState("observer", null);
-                            alert("signup failed");
+                            alert("Не получилось зарегистрироваться:( Скорее всего, такой ник уже занят.");
                         }
                     })      
+            } 
+            else{
+                changeAppState("observer", null);
+                alert("Не получилось зарегистрироваться( Скорее всего, такой ник уже занят.");
             }
+
         })
     }
 
     return (
-        <div>
-            <h4>Sign up</h4>
+        <div className="app-div">
+            <h4>Регистрация</h4>
             <form onSubmit={handleSignUpForm} >
                 <div class='app-div'>
-                    <input class='rounded-input' name="name" type="text" required minLength="1" maxLength="20" placeholder="your username" onChange={handleChange}/>
-                    <input class='rounded-input' name="password" type="text" required minLength="4" maxLength="20" placeholder="very strong password" onChange={handleChange}/>
+                    <input class='rounded-input' name="name" type="text" required minLength="1" maxLength="20" placeholder="имя пользователя" onChange={handleChange}/>
+                    <input class='rounded-input' name="password" type="password" required minLength="4" maxLength="20" placeholder="очень надежный пароль" onChange={handleChange}/>
                 </div>
 
                 <div class='app-div'> 
-                    <button class='rounded-button' type="submit">Sign me up fam</button>
+                    <button class='rounded-button' type="submit">Зарегистрироваться</button>
                 </div>
                
             </form>

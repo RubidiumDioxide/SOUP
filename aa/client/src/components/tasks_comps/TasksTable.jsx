@@ -43,10 +43,10 @@ export default function TasksTable({isCreator, projectId, type, isProjectComplet
   }
 
 return (
-  <div>
-    {(isInTeam && !isProjectComplete)? <div>
+  <div className="app-div">
+    {(isInTeam && !isProjectComplete)? <div className="app-div">
       <button class='rounded-button' onClick={changeAddState}>
-        New task
+        Новая задача
       </button>
       
       {isAdding?
@@ -59,15 +59,15 @@ return (
     </div> : null}
 
     {(tasks.length == 0)?
-    <p>No tasks yet</p>
+    <p>У вас нет задач</p>
     : 
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Assigned to</th>
-          <th>Status</th>
+          <th>Задача</th>
+          <th>Описание</th>
+          <th>Исполнитель</th>
+          <th>Состояние</th>
         </tr>
       </thead>
       <tbody>

@@ -17,7 +17,7 @@ export default function Delete({team, team:{id, userId, userName, projectId, pro
     return (
         <div>
             <button class='rounded-button' onClick={handleDeleteForm}>
-                Evict
+                Исключить
             </button>
         </div>
     )

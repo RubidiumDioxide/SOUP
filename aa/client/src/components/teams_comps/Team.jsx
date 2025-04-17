@@ -20,7 +20,7 @@ export default function Team({team, team:{id, userId, userName, projectId, proje
         </td>
         <td>
           <button class='rounded-button' onClick={(e) => captureEdit(team)}>
-            Change Role
+            Изменить роль
           </button>
         </td>
       </>

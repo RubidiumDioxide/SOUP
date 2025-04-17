@@ -35,7 +35,7 @@ export default function IndTask() {
   return (
       (task && (isCreator || isAssignee))?
         //if task is loaded and should be viewed 
-        <div>
+        <div className="app-div">
           <h1>{task.name}</h1>
           <h4>{task.isComplete?"Finished":"In progress"}</h4>
           <p>

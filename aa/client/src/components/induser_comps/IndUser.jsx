@@ -27,7 +27,7 @@ export default function IndUser() {
   return (
       (user)?
         //if user is loaded 
-        <div>
+        <div className="app-div">
           <h1>{user.name}</h1>
 
           {(user.id == sessionStorage.getItem("savedUserID"))?
@@ -38,7 +38,7 @@ export default function IndUser() {
                   refresh={refresh}
                 /> : null}
               <button class='rounded-button' onClick={() => changeEditState()}>
-                Edit
+                Изменить
               </button>
             </>
             :

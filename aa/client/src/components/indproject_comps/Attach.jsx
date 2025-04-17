@@ -42,8 +42,8 @@ export default function Attach({ projectId, onAction }) {
     }
 
     return (
-        <div>
-            <h4>Note that you can only enter these values once! </h4>
+        <div className="app-div">
+            <h4>Репозиторий можно привязать только один раз. Проверяйте данные внимательно! </h4>
             <form onSubmit={handleAttachForm}>
                 <div class='app-div'>
                   <input class='rounded-input' type="text" name="githubName" placeholder="github repository name" value={attachForm.githubName} onChange={handleFormChange}/>

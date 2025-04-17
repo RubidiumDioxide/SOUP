@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\teote\\Desktop\\BORSH\\aa\\aa.csproj": {}
+    "C:\\Users\\User\\storage\\courses\\папс\\SOUP\\aa\\aa.csproj": {}
   },
   "projects": {
-    "C:\\Users\\teote\\Desktop\\BORSH\\aa\\aa.csproj": {
+    "C:\\Users\\User\\storage\\courses\\папс\\SOUP\\aa\\aa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\teote\\Desktop\\BORSH\\aa\\aa.csproj",
+        "projectUniqueName": "C:\\Users\\User\\storage\\courses\\папс\\SOUP\\aa\\aa.csproj",
         "projectName": "aa",
-        "projectPath": "C:\\Users\\teote\\Desktop\\BORSH\\aa\\aa.csproj",
-        "packagesPath": "C:\\Users\\teote\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\teote\\Desktop\\BORSH\\aa\\obj\\",
+        "projectPath": "C:\\Users\\User\\storage\\courses\\папс\\SOUP\\aa\\aa.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\storage\\courses\\папс\\SOUP\\aa\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Program Files\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\teote\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -100,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

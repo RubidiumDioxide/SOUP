@@ -76,11 +76,11 @@ export default function AddFinish({projectId, taskId, onAction, type}) {
     return (
         <div>
             <form onSubmit={handleAddForm}>
-                <input class='rounded-input' type="text" name="description" placeholder="task description" value={addForm.description} onChange={handleFormChange}/>
-                <input class='rounded-input' type="text" name="commit" placeholder="gtihub commit" value={addForm.commit} onChange={handleFormChange}/>
+                <input class='rounded-input' type="text" name="description" placeholder="комментарий" value={addForm.description} onChange={handleFormChange}/>
+                <input class='rounded-input' type="text" name="commit" placeholder="gtihub коммит" value={addForm.commit} onChange={handleFormChange}/>
                 
                 <div class='app-div'>
-                    <button class='rounded-button' type="submit">{(type == 'add')?'Add Action':'Add Finishing Action'}</button>
+                    <button class='rounded-button' type="submit">{(type == 'add')?'Добавить действие':'Добавить действие и завершить задачу'}</button>
                 </div>
             </form>
         </div>

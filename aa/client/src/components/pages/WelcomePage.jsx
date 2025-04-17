@@ -8,24 +8,28 @@ export default function Welcome({changeAppState}) {
   const [welcomeState, setWelcomeState] = useState("none"); //possible values: none, login, signup  
 
     return (
-        <div>
-          <p>Hiiiiiiiii</p>  
+        <div className="app-div">
+          <h1 className="glow">Добро пожаловать в SOUP-I!</h1>  
           <p>
-            <button class='rounded-button' onClick={() => {setWelcomeState("login")}}>
-              Log In
+            <button className='rounded-button' onClick={() => {setWelcomeState("login")}}>
+              Вход
             </button>
-            <button class='rounded-button' onClick={() => {setWelcomeState("signup")}}>
-              Sign Up            
+            <button className='rounded-button' onClick={() => {setWelcomeState("signup")}}>
+              Регистрация
             </button>
           </p>
           
           {(welcomeState === "signup")? 
-            <SignUp changeAppState={changeAppState}/>          
+            <SignUp 
+              changeAppState={changeAppState}
+            />          
             :
             null
           }
           {(welcomeState === "login")? 
-            <LogIn changeAppState={changeAppState}/>          
+            <LogIn 
+              changeAppState={changeAppState} 
+            />          
             :
             null
           }
